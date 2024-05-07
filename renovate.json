@@ -1,0 +1,28 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "ignorePaths": [
+    "**/frontend/**"
+  ],
+  "semanticCommits": "enabled",
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "enabled",
+  "major": {
+    "labels": [
+      "major"
+    ]
+  },
+  "minor": {
+    "labels": [
+      "minor"
+    ]
+  },
+  "patch": {
+    "automerge": true,
+    "labels": [
+      "patch"
+    ]
+  },
+  "ignoreUnstable": true,
+  "rangeStrategy": "widen",
+  "recreateClosed": true
+}

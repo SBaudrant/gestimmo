@@ -1,0 +1,21 @@
+build_prod_frontend_react:
+    stage: build
+    tags:
+        - docker
+    artifacts:
+        name: "gestimmo-frontend-$CI_COMMIT_REF_NAME"
+        expire_in: 7 days
+        paths:
+            - frontend/gestimmo-frontend.zip
+    only:
+        - tags
+    variables:
+        COMPOSE_PROJECT_NAME: 'gestimmo_build_frontend{CI_JOB_ID}'
+    script:
+        - exit 0
+        # - cd frontend
+        # # update the version number
+        # - cat ./package.json | sed -e "s/\"0.0.0\"/\"$CI_COMMIT_REF_NAME\"/g" > ./package.json.new &&
+        #     rm ./package.json &&
+        #     mv ./package.json.new ./package.json
+        # - make build-prod

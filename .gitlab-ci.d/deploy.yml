@@ -1,0 +1,17 @@
+deploy_qualification:
+    stage: deploy
+    resource_group: deploy_qualification
+    tags:
+        - docker
+    only:
+        - tags
+    environment:
+        name: qualification
+    variables:
+        backend_zip: backend/gestimmo-backend.zip
+        frontend_zip: frontend-angular/gestimmo-frontend.zip
+    script:
+        - ./scripts/vcenter_turn_on_vm_if_off.sh $VCENTER_HOST $VCENTER_LOGIN $VCENTER_PASSWORD $VCENTER_QUALIF_VM_ID
+        - sshpass -p $QUALIFICATION_PWD scp -o "StrictHostKeyChecking no" $backend_zip ${QUALIFICATION_USER}@${QUALIFICATION_HOST}:/srv/www/gestimmo/gestimmo-backend.zip
+        - sshpass -p $QUALIFICATION_PWD scp -o "StrictHostKeyChecking no" $frontend_zip ${QUALIFICATION_USER}@${QUALIFICATION_HOST}:/srv/www/gestimmo/gestimmo-frontend.zip
+        - sshpass -p $QUALIFICATION_PWD ssh -l $QUALIFICATION_USER $QUALIFICATION_HOST "bash -s" -- < scripts/deploy.sh "$CI_COMMIT_REF_NAME"

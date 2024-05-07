@@ -1,0 +1,37 @@
+parameters:
+  # Mot de passe = "pass"
+  # Pour le modifier, utiliser la commande `security:hash-password`
+  password_hash: $2y$13$S88eMZ.tUMhfxcSRq1TCjeD5FW3wy28woVpfo8gg9ZZx4kpRgBUpq
+
+App\Entity\User:
+  user-admin_1:
+    email: 'admin@test.com'
+    firstName: 'Compte'
+    lastName: 'Administrateur'
+    password: '<{password_hash}>'
+    role: '<(App\Enum\Role::ADMIN)>'
+    active: true
+
+  user-user_1:
+    email: 'user@test.com'
+    firstName: 'Compte'
+    lastName: 'Utilisateur'
+    password: '<{password_hash}>'
+    role: '<(App\Enum\Role::USER)>'
+    active: true
+
+  user-user_{2..100}:
+    email: '<email()>'
+    firstName: '<firstName()>'
+    lastName: '<lastName()>'
+    password: '<{password_hash}>'
+    role: '<(App\Enum\Role::USER)>'
+    active: true
+
+  user-admin_{2..10}:
+    email: '<email()>'
+    firstName: '<firstName()>'
+    lastName: '<lastName()>'
+    password: '<{password_hash}>'
+    role: '<(App\Enum\Role::ADMIN)>'
+    active: true

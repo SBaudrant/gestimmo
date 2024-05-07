@@ -1,0 +1,28 @@
+tslint-react:
+    stage: lint
+    tags:
+        - docker
+    only:
+        refs:
+            - merge_requests
+            - tags
+        changes:
+            - frontend/**/*.ts
+    interruptible: true
+    allow_failure: true
+    script:
+        - docker run -i --rm -v $(pwd)/frontend:/srv/app -v /srv/app/node_modules MON_REPO/docker/tools/tslint:latest --project tsconfig.json
+
+stylelint-react:
+    stage: lint
+    tags:
+        - docker
+    only:
+        refs:
+            - merge_requests
+            - tags
+        changes:
+            - frontend/**/*.{html,scss,css}
+    interruptible: true
+    script:
+        - docker run -t --rm -v $(pwd)/frontend:/srv/app:ro MON_REPO/docker/tools/stylelint:latest

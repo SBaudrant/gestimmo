@@ -1,0 +1,20 @@
+stages:
+    - merge
+    - lint
+    - test
+    - build
+    - deploy
+    - upload
+
+include:
+    - local: '.gitlab-ci.d/*.yml'
+
+# Allows to merge in case no pipeline are run
+enable_merge:
+    stage: merge
+    tags:
+        - docker
+    only:
+        - merge_requests
+    script:
+        - exit 0

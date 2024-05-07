@@ -1,0 +1,20 @@
+i18n:
+    image: MON_REPO/gestimmo/gestimmo/frontend-angular/lint:latest
+    stage: test
+    only:
+        refs:
+            - merge_requests
+            - tags
+        changes:
+            - frontend-angular/**/*.ts
+            - frontend-angular/**/*.html
+            - frontend-angular/package.lock
+            - .gitlab-ci.d/test-angular.yml
+    before_script:
+        - cd frontend-angular/
+        - ln -s /a5cache/node_modules ./node_modules
+    script:
+        - npm run i18n:extract
+        - '! cat src/assets/i18n/*.json | grep -q "Missing value for " || EXITCODE=$?'
+        - if [ $EXITCODE -ne 0 ]; then cat src/assets/i18n/*.json | grep -n "Missing value for "; fi;
+        - exit $EXITCODE
