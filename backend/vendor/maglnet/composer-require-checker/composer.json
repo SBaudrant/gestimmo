@@ -1,0 +1,76 @@
+{
+    "name": "maglnet/composer-require-checker",
+    "type": "library",
+    "description": "CLI tool to analyze composer dependencies and verify that no unknown symbols are used in the sources of a package",
+    "keywords": [
+        "composer",
+        "dependency",
+        "cli",
+        "analysis",
+        "requirements",
+        "imports",
+        "require"
+    ],
+    "homepage": "https://github.com/maglnet/ComposerRequireChecker",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marco Pivetta",
+            "email": "ocramius@gmail.com",
+            "homepage": "http://ocramius.github.io/"
+        },
+        {
+            "name": "Matthias Glaub",
+            "email": "magl@magl.net",
+            "homepage": "http://magl.net"
+        }
+    ],
+    "require": {
+        "php": "~8.1.0 || ~8.2.0",
+        "ext-phar": "*",
+        "composer-runtime-api": "^2.0.0",
+        "nikic/php-parser": "^4.15.2",
+        "symfony/console": "^6.2.3",
+        "webmozart/assert": "^1.11.0",
+        "webmozart/glob": "^4.6.0"
+    },
+    "require-dev": {
+        "ext-zend-opcache": "*",
+        "doctrine/coding-standard": "^11.0.0",
+        "mikey179/vfsstream": "^1.6.11",
+        "phing/phing": "^2.17.4",
+        "phpstan/phpstan": "^1.9.4",
+        "phpunit/phpunit": "^9.5.27",
+        "roave/infection-static-analysis-plugin": "^1.27.0",
+        "vimeo/psalm": "^5.4.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "platform": {
+            "php": "8.1.99"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "infection/extension-installer": true
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.1-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "ComposerRequireChecker\\": "src/ComposerRequireChecker"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ComposerRequireCheckerTest\\": "test/ComposerRequireCheckerTest"
+        }
+    },
+    "bin": [
+        "bin/composer-require-checker"
+    ]
+}

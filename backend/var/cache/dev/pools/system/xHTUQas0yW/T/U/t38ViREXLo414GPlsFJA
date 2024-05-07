@@ -1,0 +1,98 @@
+<?php //App_Entity_User
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\User',
+                'id',
+                'email',
+                'firstName',
+                'lastName',
+                'password',
+                'role',
+                'active',
+                'initPasswordTokenExpiration',
+                'initPasswordToken',
+                'username',
+                'userIdentifier',
+                'salt',
+                'roles',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'email' => $o[2],
+                    'firstName' => $o[3],
+                    'lastName' => $o[4],
+                    'password' => $o[5],
+                    'role' => $o[6],
+                    'active' => $o[7],
+                    'initPasswordTokenExpiration' => $o[8],
+                    'initPasswordToken' => $o[9],
+                    'username' => $o[10],
+                    'userIdentifier' => $o[11],
+                    'salt' => $o[12],
+                    'roles' => $o[13],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'user:get',
+                    'user:getAll',
+                    'user:create',
+                    'user:update',
+                ],
+                [
+                    'user:get',
+                    'user:getAll',
+                    'user:create',
+                    'user:update',
+                ],
+                [
+                    'user:get',
+                    'user:getAll',
+                    'user:create',
+                    'user:update',
+                ],
+                [
+                    'user:get',
+                    'user:getAll',
+                    'user:create',
+                    'user:update',
+                ],
+                6 => [
+                    'user:get',
+                    'user:getAll',
+                    'user:create',
+                    'user:update',
+                ],
+                [
+                    'user:get',
+                    'user:getAll',
+                    'user:create',
+                    'user:update',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

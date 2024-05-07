@@ -1,0 +1,1311 @@
+<?php //resource_metadata_collection_06cf21d6b3a726a1deadff4ee9d763bd
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['ApiPlatform\\Metadata\\ApiResource'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\ApiResource')),
+        clone ($p['ApiPlatform\\Metadata\\Operations'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\Operations')),
+        clone ($p['ApiPlatform\\Metadata\\Get'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\Get')),
+        clone ($p['ApiPlatform\\Metadata\\Link'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\Link')),
+        clone ($p['ApiPlatform\\Metadata\\Patch'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\Patch')),
+        clone $p['ApiPlatform\\Metadata\\Link'],
+        clone ($p['ApiPlatform\\Metadata\\Delete'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\Delete')),
+        clone $p['ApiPlatform\\Metadata\\Link'],
+        clone ($p['ApiPlatform\\Metadata\\GetCollection'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\GetCollection')),
+        clone ($p['ApiPlatform\\Metadata\\Post'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\Post')),
+        clone $p['ApiPlatform\\Metadata\\Post'],
+        clone $p['ApiPlatform\\Metadata\\Post'],
+        clone $p['ApiPlatform\\Metadata\\Link'],
+        clone $p['ApiPlatform\\Metadata\\Patch'],
+        clone $p['ApiPlatform\\Metadata\\Link'],
+        clone $p['ApiPlatform\\Metadata\\Link'],
+    ],
+    null,
+    [
+        'ApiPlatform\\Metadata\\ApiResource' => [
+            'operations' => [
+                $o[1],
+            ],
+            'uriTemplate' => [
+                null,
+            ],
+            'shortName' => [
+                'User',
+            ],
+            'description' => [
+                null,
+            ],
+            'types' => [
+                null,
+            ],
+            'formats' => [
+                null,
+            ],
+            'inputFormats' => [
+                null,
+            ],
+            'outputFormats' => [
+                null,
+            ],
+            'uriVariables' => [
+                [
+                    'id' => $o[15],
+                ],
+            ],
+            'routePrefix' => [
+                null,
+            ],
+            'defaults' => [
+                null,
+            ],
+            'requirements' => [
+                null,
+            ],
+            'options' => [
+                null,
+            ],
+            'stateless' => [
+                null,
+            ],
+            'sunset' => [
+                null,
+            ],
+            'acceptPatch' => [
+                null,
+            ],
+            'status' => [
+                null,
+            ],
+            'host' => [
+                null,
+            ],
+            'schemes' => [
+                null,
+            ],
+            'condition' => [
+                null,
+            ],
+            'controller' => [
+                null,
+            ],
+            'class' => [
+                'App\\Entity\\User',
+            ],
+            'urlGenerationStrategy' => [
+                null,
+            ],
+            'deprecationReason' => [
+                null,
+            ],
+            'cacheHeaders' => [
+                null,
+            ],
+            'normalizationContext' => [
+                null,
+            ],
+            'denormalizationContext' => [
+                null,
+            ],
+            'collectDenormalizationErrors' => [
+                true,
+            ],
+            'hydraContext' => [
+                null,
+            ],
+            'openapiContext' => [
+                null,
+            ],
+            'openapi' => [
+                null,
+            ],
+            'validationContext' => [
+                null,
+            ],
+            'filters' => [
+                null,
+            ],
+            'elasticsearch' => [
+                null,
+            ],
+            'order' => [
+                null,
+            ],
+            'fetchPartial' => [
+                null,
+            ],
+            'forceEager' => [
+                null,
+            ],
+            'paginationClientEnabled' => [
+                true,
+            ],
+            'paginationClientItemsPerPage' => [
+                true,
+            ],
+            'paginationClientPartial' => [
+                null,
+            ],
+            'paginationViaCursor' => [
+                null,
+            ],
+            'paginationEnabled' => [
+                null,
+            ],
+            'paginationFetchJoinCollection' => [
+                null,
+            ],
+            'paginationUseOutputWalkers' => [
+                null,
+            ],
+            'paginationItemsPerPage' => [
+                null,
+            ],
+            'paginationMaximumItemsPerPage' => [
+                null,
+            ],
+            'paginationPartial' => [
+                null,
+            ],
+            'paginationType' => [
+                null,
+            ],
+            'security' => [
+                null,
+            ],
+            'securityMessage' => [
+                null,
+            ],
+            'securityPostDenormalize' => [
+                null,
+            ],
+            'securityPostDenormalizeMessage' => [
+                null,
+            ],
+            'securityPostValidation' => [
+                null,
+            ],
+            'securityPostValidationMessage' => [
+                null,
+            ],
+            'compositeIdentifier' => [
+                null,
+            ],
+            'exceptionToStatus' => [
+                null,
+            ],
+            'queryParameterValidationEnabled' => [
+                null,
+            ],
+            'graphQlOperations' => [
+                [],
+            ],
+            'stateOptions' => [
+                null,
+            ],
+            'extraProperties' => [
+                [],
+            ],
+        ],
+        'ApiPlatform\\Metadata\\Operations' => [
+            'operations' => [
+                1 => [
+                    [
+                        '_api_/users/{id}{._format}_get',
+                        $o[2],
+                    ],
+                    [
+                        '_api_/users/{id}{._format}_patch',
+                        $o[4],
+                    ],
+                    [
+                        '_api_/users/{id}{._format}_delete',
+                        $o[6],
+                    ],
+                    [
+                        '_api_/users{._format}_get_collection',
+                        $o[8],
+                    ],
+                    [
+                        '_api_/users{._format}_post',
+                        $o[9],
+                    ],
+                    [
+                        '_api_/users/init_password_post',
+                        $o[10],
+                    ],
+                    [
+                        '_api_/users/init_password/{token}_post',
+                        $o[11],
+                    ],
+                    [
+                        '_api_/users/{user}/change_password_patch',
+                        $o[13],
+                    ],
+                ],
+            ],
+        ],
+        'ApiPlatform\\Metadata\\Operation' => [
+            'shortName' => [
+                2 => 'User',
+                4 => 'User',
+                6 => 'User',
+                8 => 'User',
+                'User',
+                'User',
+                'User',
+                13 => 'User',
+            ],
+            'class' => [
+                2 => 'App\\Entity\\User',
+                4 => 'App\\Entity\\User',
+                6 => 'App\\Entity\\User',
+                8 => 'App\\Entity\\User',
+                'App\\Entity\\User',
+                'App\\Entity\\User',
+                'App\\Entity\\User',
+                13 => 'App\\Entity\\User',
+            ],
+            'paginationEnabled' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'paginationType' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'paginationItemsPerPage' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'paginationMaximumItemsPerPage' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'paginationPartial' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'paginationClientEnabled' => [
+                2 => true,
+                4 => true,
+                6 => true,
+                8 => true,
+                true,
+                true,
+                true,
+                13 => true,
+            ],
+            'paginationClientItemsPerPage' => [
+                2 => true,
+                4 => true,
+                6 => true,
+                8 => true,
+                true,
+                true,
+                true,
+                13 => true,
+            ],
+            'paginationClientPartial' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'paginationFetchJoinCollection' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'paginationUseOutputWalkers' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'order' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'description' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'normalizationContext' => [
+                2 => [
+                    'groups' => [
+                        'user:get',
+                    ],
+                ],
+                4 => [
+                    'groups' => [
+                        'user:get',
+                    ],
+                ],
+                6 => null,
+                8 => [
+                    'groups' => [
+                        'user:getAll',
+                    ],
+                ],
+                [
+                    'groups' => [
+                        'user:get',
+                    ],
+                ],
+                null,
+                null,
+                13 => null,
+            ],
+            'denormalizationContext' => [
+                2 => null,
+                4 => [
+                    'groups' => [
+                        'user:update',
+                    ],
+                ],
+                6 => null,
+                8 => null,
+                [
+                    'groups' => [
+                        'user:create',
+                    ],
+                ],
+                null,
+                [
+                    'groups' => [
+                        'user:initPassword',
+                    ],
+                ],
+                13 => [
+                    'groups' => [
+                        'userUpdatePasswordRequest:put',
+                    ],
+                ],
+            ],
+            'collectDenormalizationErrors' => [
+                2 => true,
+                4 => true,
+                6 => true,
+                8 => true,
+                true,
+                true,
+                true,
+                13 => true,
+            ],
+            'security' => [
+                2 => 'is_granted(\'GET_ITEM\', object)',
+                4 => 'is_granted(\'PUT_ITEM\', object)',
+                6 => 'is_granted(\'DELETE_ITEM\', object)',
+                8 => 'is_granted(\'GET_COLLECTION\', object)',
+                null,
+                null,
+                null,
+                13 => 'object.getUser() === user',
+            ],
+            'securityMessage' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'securityPostDenormalize' => [
+                2 => null,
+                4 => 'object !== user or object.getRole() === previous_object.getRole()',
+                6 => null,
+                8 => null,
+                'is_granted(\'POST_COLLECTION\', object)',
+                null,
+                null,
+                13 => null,
+            ],
+            'securityPostDenormalizeMessage' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'securityPostValidation' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'securityPostValidationMessage' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'deprecationReason' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'filters' => [
+                2 => [
+                    'annotated_app_entity_user_app_filter_user_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_order_filter',
+                ],
+                4 => [
+                    'annotated_app_entity_user_app_filter_user_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_order_filter',
+                ],
+                6 => [
+                    'annotated_app_entity_user_app_filter_user_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_order_filter',
+                ],
+                8 => [
+                    'annotated_app_entity_user_app_filter_user_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_order_filter',
+                ],
+                [
+                    'annotated_app_entity_user_app_filter_user_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_order_filter',
+                ],
+                [
+                    'annotated_app_entity_user_app_filter_user_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_order_filter',
+                ],
+                [
+                    'annotated_app_entity_user_app_filter_user_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_order_filter',
+                ],
+                13 => [
+                    'annotated_app_entity_user_app_filter_user_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_search_filter',
+                    'annotated_app_entity_user_api_platform_doctrine_orm_filter_order_filter',
+                ],
+            ],
+            'validationContext' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'elasticsearch' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'urlGenerationStrategy' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'read' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'deserialize' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'validate' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'write' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'serialize' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'fetchPartial' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'forceEager' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'priority' => [
+                2 => 0,
+                4 => 1,
+                6 => 2,
+                8 => 3,
+                4,
+                5,
+                6,
+                13 => 7,
+            ],
+            'name' => [
+                2 => '_api_/users/{id}{._format}_get',
+                4 => '_api_/users/{id}{._format}_patch',
+                6 => '_api_/users/{id}{._format}_delete',
+                8 => '_api_/users{._format}_get_collection',
+                '_api_/users{._format}_post',
+                '_api_/users/init_password_post',
+                '_api_/users/init_password/{token}_post',
+                13 => '_api_/users/{user}/change_password_patch',
+            ],
+            'provider' => [
+                2 => 'ApiPlatform\\Doctrine\\Orm\\State\\ItemProvider',
+                4 => 'ApiPlatform\\Doctrine\\Orm\\State\\ItemProvider',
+                6 => 'ApiPlatform\\Doctrine\\Orm\\State\\ItemProvider',
+                8 => 'ApiPlatform\\Doctrine\\Orm\\State\\CollectionProvider',
+                'ApiPlatform\\Doctrine\\Orm\\State\\ItemProvider',
+                'ApiPlatform\\Doctrine\\Orm\\State\\ItemProvider',
+                'App\\State\\UserInitPasswordRequestProvider',
+                13 => 'App\\State\\UserUpdatePasswordRequestProvider',
+            ],
+            'processor' => [
+                2 => 'api_platform.doctrine.orm.state.persist_processor',
+                4 => 'api_platform.doctrine.orm.state.persist_processor',
+                6 => 'api_platform.doctrine.orm.state.remove_processor',
+                8 => 'api_platform.doctrine.orm.state.persist_processor',
+                'App\\State\\NewUserProcessor',
+                'App\\State\\UserPasswordResetRequestProcessor',
+                'App\\State\\UserInitPasswordRequestProcessor',
+                13 => 'App\\State\\UserUpdatePasswordRequestProcessor',
+            ],
+            'stateOptions' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'extraProperties' => [
+                2 => [],
+                4 => [],
+                6 => [],
+                8 => [],
+                [],
+                [
+                    'user_defined_uri_template' => true,
+                ],
+                [
+                    'user_defined_uri_template' => true,
+                ],
+                13 => [
+                    'user_defined_uri_template' => true,
+                ],
+            ],
+            'input' => [
+                10 => [
+                    'class' => 'App\\Dto\\User\\UserPasswordResetRequest',
+                    'name' => 'UserPasswordResetRequest',
+                ],
+                [
+                    'class' => 'App\\Dto\\User\\UserInitPasswordRequest',
+                    'name' => 'UserInitPasswordRequest',
+                ],
+                13 => [
+                    'class' => 'App\\Dto\\User\\UserUpdatePasswordRequest',
+                    'name' => 'UserUpdatePasswordRequest',
+                ],
+            ],
+            'output' => [
+                10 => [
+                    'class' => null,
+                ],
+                [
+                    'class' => null,
+                ],
+                13 => [
+                    'class' => null,
+                ],
+            ],
+        ],
+        'ApiPlatform\\Metadata\\HttpOperation' => [
+            'paginationViaCursor' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'method' => [
+                2 => 'GET',
+                4 => 'PATCH',
+                6 => 'DELETE',
+                8 => 'GET',
+                'POST',
+                'POST',
+                'POST',
+                13 => 'PATCH',
+            ],
+            'uriTemplate' => [
+                2 => '/users/{id}{._format}',
+                4 => '/users/{id}{._format}',
+                6 => '/users/{id}{._format}',
+                8 => '/users{._format}',
+                '/users{._format}',
+                '/users/init_password',
+                '/users/init_password/{token}',
+                13 => '/users/{user}/change_password',
+            ],
+            'types' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'inputFormats' => [
+                2 => [
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                    'json' => [
+                        'application/json',
+                    ],
+                    'html' => [
+                        'text/html',
+                    ],
+                ],
+                4 => [
+                    'json' => [
+                        'application/json',
+                    ],
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                ],
+                6 => [
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                    'json' => [
+                        'application/json',
+                    ],
+                    'html' => [
+                        'text/html',
+                    ],
+                ],
+                8 => [
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                    'json' => [
+                        'application/json',
+                    ],
+                    'html' => [
+                        'text/html',
+                    ],
+                ],
+                [
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                    'json' => [
+                        'application/json',
+                    ],
+                    'html' => [
+                        'text/html',
+                    ],
+                ],
+                [
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                    'json' => [
+                        'application/json',
+                    ],
+                    'html' => [
+                        'text/html',
+                    ],
+                ],
+                [
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                    'json' => [
+                        'application/json',
+                    ],
+                    'html' => [
+                        'text/html',
+                    ],
+                ],
+                13 => [
+                    'json' => [
+                        'application/json',
+                    ],
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                ],
+            ],
+            'outputFormats' => [
+                2 => [
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                    'json' => [
+                        'application/json',
+                    ],
+                    'html' => [
+                        'text/html',
+                    ],
+                ],
+                4 => [
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                    'json' => [
+                        'application/json',
+                    ],
+                    'html' => [
+                        'text/html',
+                    ],
+                ],
+                6 => [
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                    'json' => [
+                        'application/json',
+                    ],
+                    'html' => [
+                        'text/html',
+                    ],
+                ],
+                8 => [
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                    'json' => [
+                        'application/json',
+                    ],
+                    'html' => [
+                        'text/html',
+                    ],
+                ],
+                [
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                    'json' => [
+                        'application/json',
+                    ],
+                    'html' => [
+                        'text/html',
+                    ],
+                ],
+                [
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                    'json' => [
+                        'application/json',
+                    ],
+                    'html' => [
+                        'text/html',
+                    ],
+                ],
+                [
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                    'json' => [
+                        'application/json',
+                    ],
+                    'html' => [
+                        'text/html',
+                    ],
+                ],
+                13 => [
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                    'json' => [
+                        'application/json',
+                    ],
+                    'html' => [
+                        'text/html',
+                    ],
+                ],
+            ],
+            'uriVariables' => [
+                2 => [
+                    'id' => $o[3],
+                ],
+                4 => [
+                    'id' => $o[5],
+                ],
+                6 => [
+                    'id' => $o[7],
+                ],
+                9 => [],
+                [],
+                [
+                    'token' => $o[12],
+                ],
+                13 => [
+                    'user' => $o[14],
+                ],
+            ],
+            'routePrefix' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'routeName' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'defaults' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'requirements' => [
+                2 => [
+                    'id' => '\\d+',
+                ],
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'options' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'stateless' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'sunset' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'acceptPatch' => [
+                2 => 'application/json, application/ld+json',
+                4 => 'application/json, application/ld+json',
+                6 => 'application/json, application/ld+json',
+                8 => null,
+                'application/json, application/ld+json',
+                'application/json, application/ld+json',
+                'application/json, application/ld+json',
+                13 => 'application/json, application/ld+json',
+            ],
+            'host' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'schemes' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'condition' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'controller' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'cacheHeaders' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'hydraContext' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'openapiContext' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                [
+                    'summary' => 'Envoie une demande de réinitialisation de mot de passe',
+                    'responses' => [
+                        204 => [
+                            'description' => 'La demande de réinitialisation a été prise en compte',
+                            'content' => [],
+                        ],
+                        400 => [
+                            'description' => 'Requête invalide',
+                            'content' => [],
+                        ],
+                    ],
+                ],
+                [
+                    'summary' => 'Réinitialise le mot de passe à l\'aide d\'un token',
+                    'responses' => [
+                        204 => [
+                            'description' => 'Mot de passe réinitialisé',
+                            'content' => [],
+                        ],
+                        400 => [
+                            'description' => 'Requête invalide',
+                            'content' => [],
+                        ],
+                    ],
+                ],
+                13 => [
+                    'summary' => 'Met à jour le mot de passe de l\'utilisateur',
+                    'tags' => [
+                        'User',
+                    ],
+                    'responses' => [
+                        200 => [
+                            'description' => 'Mot de passe modifié',
+                            'content' => [],
+                        ],
+                        400 => [
+                            'description' => 'Requête invalide',
+                            'content' => [],
+                        ],
+                        404 => [
+                            'description' => 'Utilisateur inconnu',
+                            'content' => [],
+                        ],
+                    ],
+                ],
+            ],
+            'openapi' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'exceptionToStatus' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'queryParameterValidationEnabled' => [
+                2 => null,
+                4 => null,
+                6 => null,
+                8 => null,
+                null,
+                null,
+                null,
+                13 => null,
+            ],
+            'status' => [
+                10 => 204,
+                204,
+                13 => 204,
+            ],
+        ],
+        'ApiPlatform\\Metadata\\Link' => [
+            'parameterName' => [
+                3 => 'id',
+                5 => 'id',
+                7 => 'id',
+                12 => 'token',
+                14 => 'user',
+                'id',
+            ],
+            'fromProperty' => [
+                3 => null,
+                5 => null,
+                7 => null,
+                12 => null,
+                14 => null,
+                null,
+            ],
+            'toProperty' => [
+                3 => null,
+                5 => null,
+                7 => null,
+                12 => 'initPasswordToken',
+                14 => 'id',
+                null,
+            ],
+            'fromClass' => [
+                3 => 'App\\Entity\\User',
+                5 => 'App\\Entity\\User',
+                7 => 'App\\Entity\\User',
+                12 => 'App\\Dto\\User\\UserInitPasswordRequest',
+                14 => 'App\\Dto\\User\\UserUpdatePasswordRequest',
+                'App\\Entity\\User',
+            ],
+            'toClass' => [
+                3 => null,
+                5 => null,
+                7 => null,
+                12 => 'App\\Entity\\User',
+                14 => 'App\\Entity\\User',
+                null,
+            ],
+            'identifiers' => [
+                3 => [
+                    'id',
+                ],
+                5 => [
+                    'id',
+                ],
+                7 => [
+                    'id',
+                ],
+                12 => [
+                    'user',
+                ],
+                14 => [],
+                [
+                    'id',
+                ],
+            ],
+            'compositeIdentifier' => [
+                3 => null,
+                5 => null,
+                7 => null,
+                12 => null,
+                14 => null,
+                null,
+            ],
+            'expandedValue' => [
+                3 => null,
+                5 => null,
+                7 => null,
+                12 => null,
+                14 => null,
+                null,
+            ],
+        ],
+        'ApiPlatform\\Metadata\\GetCollection' => [
+            'itemUriTemplate' => [
+                8 => null,
+            ],
+        ],
+        'ApiPlatform\\Metadata\\Post' => [
+            'itemUriTemplate' => [
+                9 => null,
+                null,
+                null,
+            ],
+        ],
+    ],
+    [
+        $o[0],
+    ],
+    []
+); }];
