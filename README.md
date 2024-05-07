@@ -17,20 +17,6 @@ https://gitlab.a5sys.com/a5sys/a5sys-app-starter-kit/wikis
 
 ## Process d'initialisation d'un projet
 
-* Récupérer les sources et initialiser le nouveau projet GitLab
-* Renseigner les informations sur votre projet dans le `.env` à la racine :
-  * Nom technique du projet utilisé dans les URL gitlab (ex: `mon-projet`)
-  * Libellé du projet en français (ex: `Mon projet`)
-  * Nom technique du client utilisé dans les URL gitlab avant le nom du projet (ex: `mon-client`)
-* Donner les droits d'éxécution au script d'init
-    ```bash
-    chmod +x ./scripts/init.sh
-    ```
-* Renommer les référence au starter-kit via le script d'initialisation
-    ```bash
-    ./scripts/init.sh
-    ```
-* Nettoyer le `README.md`
 * Mettre le logo du client ici : `frontend/src/assets/img/logo.png`
 * Et le favicon ici : `frontend/src/favicon.ico`
 * Vérifier que tous les scripts *.sh sont exécutables (dans scripts/, backend/docker/entrypoint/ et frontend/docker/entrypoint)
@@ -44,8 +30,6 @@ https://gitlab.a5sys.com/a5sys/a5sys-app-starter-kit/wikis
   * `make backend push`
   * `make frontend push`
 * Commit & push les sources
-* Changer le paramètre "Allowed to push" de la branche `master` à `No one` (Settings/Repository/Protected Branches)
-* N'autoriser les MR que si la pipeline passe et les commentaires sont résolus (Settings/Merge requests/Merge checks)
 
 ## Fonctionnalités du backend
 
