@@ -1,0 +1,103 @@
+phpunit:
+    stage: test
+    only:
+        refs:
+            - merge_requests
+            - tags
+        changes:
+            - backend/**/*
+            - .gitlab-ci.d/test-symfony.yml
+    interruptible: true
+    image: MON_REPO/gestimmo/gestimmo/backend/test:latest
+    services:
+        - name: MON_REPO/docker/tools/postgres:15
+          alias: postgres
+    variables:
+        POSTGRES_DB: gestimmo
+        POSTGRES_USER: gestimmo
+        POSTGRES_PASSWORD: gestimmo_pwd
+        POSTGRES_HOST: postgres
+        POSTGRES_PORT: 5432
+        POSTGRES_VERSION: 15
+        POSTGRES_CHARSET: utf8
+    before_script:
+        - cd backend/
+        - mv /a5cache/vendor ./vendor
+        - mv /a5cache/config/jwt/* ./config/jwt/
+    script:
+        - php ./vendor/bin/phpunit
+
+psalm:
+    stage: test
+    only:
+        refs:
+            - merge_requests
+            - tags
+        changes:
+            - backend/**/*
+            - .gitlab-ci.d/test-symfony.yml
+    image: MON_REPO/gestimmo/gestimmo/backend/test:latest
+    before_script:
+        - cd backend/
+        - mv /a5cache/vendor ./vendor
+    script:
+        php ./vendor/bin/psalm
+
+phpstan:
+    stage: test
+    only:
+        refs:
+            - merge_requests
+            - tags
+        changes:
+            - backend/**/*
+            - .gitlab-ci.d/test-symfony.yml
+    image: MON_REPO/gestimmo/gestimmo/backend/test:latest
+    before_script:
+        - cd backend/
+        - mv /a5cache/vendor ./vendor
+    script:
+        - php -d memory_limit=256M ./vendor/bin/phpstan analyse src --level 5
+
+doctrine_schema:
+    stage: test
+    only:
+        refs:
+            - merge_requests
+            - tags
+        changes:
+            - backend/**/Entity/**/*
+    image: MON_REPO/gestimmo/gestimmo/backend/test:latest
+    before_script:
+        - cd backend/
+        - mv /a5cache/vendor ./vendor
+    script:
+        - php bin/console doctrine:schema:validate --skip-sync
+
+doctrine_migrations:
+    stage: test
+    only:
+        refs:
+            - merge_requests
+            - tags
+        changes:
+            - backend/migrations/**/*
+            - backend/**/Entity/**/*
+    image: MON_REPO/gestimmo/gestimmo/backend/test:latest
+    services:
+        - name: MON_REPO/docker/tools/postgres:15
+          alias: postgres
+    variables:
+        POSTGRES_DB: gestimmo
+        POSTGRES_USER: gestimmo
+        POSTGRES_PASSWORD: gestimmo_pwd
+        POSTGRES_HOST: postgres
+        POSTGRES_PORT: 5432
+        POSTGRES_VERSION: 15
+        POSTGRES_CHARSET: utf8
+    before_script:
+        - cd backend/
+        - mv /a5cache/vendor ./vendor
+    script:
+        - php bin/console doctrine:migrations:migrate --no-interaction
+        - php bin/console doctrine:schema:validate --skip-mapping

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="LENgbRe" resname="InitPassword.Mail.Subject">
+        <source>InitPassword.Mail.Subject</source>
+        <target>Initialisation du mot de passe</target>
+      </trans-unit>
+      <trans-unit id="O.ILVvS" resname="InitPassword.Mail.Content.Hello">
+        <source>InitPassword.Mail.Content.Hello</source>
+        <target>Bonjour {name}</target>
+      </trans-unit>
+      <trans-unit id="I3DLinN" resname="InitPassword.Mail.Content.ClickLinkToChangePassword">
+        <source>InitPassword.Mail.Content.ClickLinkToChangePassword</source>
+        <target>Vous avez récemment fait une demande de modification de votre mot de passe sur l’application. Pour terminer le processus, veuillez cliquer sur le lien ci dessous.</target>
+      </trans-unit>
+      <trans-unit id="BDqndSr" resname="InitPassword.Mail.Content.UpdateNow">
+        <source>InitPassword.Mail.Content.UpdateNow</source>
+        <target>Modifier maintenant</target>
+      </trans-unit>
+      <trans-unit id="1naRnBv" resname="InitPassword.Mail.Content.AccountStillSecure">
+        <source>InitPassword.Mail.Content.AccountStillSecure</source>
+        <target>Si vous n’êtes pas l’auteur de cette demande, il est probable qu’un autre utilisateur ait saisi votre identifiant par erreur et qu’en conséquence la sécurité de votre compte soit toujours intacte.</target>
+      </trans-unit>
+      <trans-unit id="LbOGGKh" resname="InitPassword.Mail.Content.UpdatePasswordIfCompromised">
+        <source>InitPassword.Mail.Content.UpdatePasswordIfCompromised</source>
+        <target>Si vous pensez qu’une personne a eu accès à votre compte sans votre autorisation, vous devriez changer votre mot de passe dans les plus brefs délais.</target>
+      </trans-unit>
+      <trans-unit id="yTpz7ek" resname="InitPassword.Mail.Content.RawLink">
+        <source>InitPassword.Mail.Content.RawLink</source>
+        <target>Si vous rencontrez des difficultés, vous pouvez recopier le lien suivant</target>
+      </trans-unit>
+      <trans-unit id="9bkP8F_" resname="InitPassword.Mail.Content.Regards">
+        <source>InitPassword.Mail.Content.Regards</source>
+        <target>Cordialement</target>
+      </trans-unit>
+      <trans-unit id="Dfmr2zy" resname="NewUser.Mail.Subject">
+        <source>NewUser.Mail.Subject</source>
+        <target>Création de votre compte utilisateur</target>
+      </trans-unit>
+      <trans-unit id="rCKks1F" resname="NewUser.Email.Content.Hello">
+        <source>NewUser.Email.Content.Hello</source>
+        <target>Bonjour {name}</target>
+      </trans-unit>
+      <trans-unit id="HixsNCH" resname="NewUser.Email.Content.AccountCreated">
+        <source>NewUser.Email.Content.AccountCreated</source>
+        <target>Votre compte a été créé</target>
+      </trans-unit>
+      <trans-unit id="48y9mQh" resname="NewUser.Email.Content.ClickToFinish">
+        <source>NewUser.Email.Content.ClickToFinish</source>
+        <target>Pour terminer le processus d’activation de votre compte, veuillez cliquer sur le lien ci-dessous</target>
+      </trans-unit>
+      <trans-unit id="BgaSamk" resname="NewUser.Email.Content.ActivateNow">
+        <source>NewUser.Email.Content.ActivateNow</source>
+        <target>Activer maintenant</target>
+      </trans-unit>
+      <trans-unit id="ch2RKYu" resname="NewUser.Email.Content.RawLink">
+        <source>NewUser.Email.Content.RawLink</source>
+        <target>Si vous rencontrez des difficultés, vous pouvez recopier le lien suivant</target>
+      </trans-unit>
+      <trans-unit id="MQFKo89" resname="NewUser.Email.Content.Regards">
+        <source>NewUser.Email.Content.Regards</source>
+        <target>Cordialement</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

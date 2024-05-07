@@ -1,0 +1,8 @@
+<project name="gestimmo-frontend" default="zip">
+  <target name="zip">
+    <zip destfile="gestimmo-frontend.zip">
+      <fileset dir="./dist/gestimmo-frontend">
+      </fileset>
+    </zip>
+  </target>
+</project>

@@ -1,0 +1,13 @@
+{% extends 'email/base.html.twig' %}
+
+{% block body %}
+  <p>{% trans with {'%name%': user.firstName ~ ' ' ~ user.lastName} %}NewUser.Email.Content.Hello{% endtrans %},</p>
+
+  <p>{% trans %}NewUser.Email.Content.AccountCreated{% endtrans %}.</p>
+  <p>{% trans %}NewUser.Email.Content.ClickToFinish{% endtrans %}.</p>
+  <p><a href="{{ setPasswordUrl }}">{% trans %}NewUser.Email.Content.ActivateNow{% endtrans %}</a>.</p>
+
+  <p>{% trans %}NewUser.Email.Content.RawLink{% endtrans %} : <span>{{ setPasswordUrl }}</span>.</p>
+
+  <p>{% trans %}NewUser.Email.Content.Regards{% endtrans %},</p>
+{% endblock %}

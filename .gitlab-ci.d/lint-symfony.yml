@@ -1,0 +1,20 @@
+phpcs:
+    stage: lint
+    only:
+        refs:
+            - merge_requests
+            - tags
+        changes:
+            - backend/**/*.php
+            - .gitlab-ci.d/lint-symfony.yml
+    variables:
+        COMPOSE_PROJECT_NAME: 'gestimmo_phpcs${CI_JOB_ID}'
+        COMPOSE_FILE: 'docker-compose.test.yml'
+    interruptible: true
+    image: MON_REPO/gestimmo/gestimmo/backend/test:latest
+    before_script:
+        - cd backend/
+        - mv /a5cache/vendor ./vendor
+        - mv /a5cache/config/jwt/* ./config/jwt/
+    script:
+        - ./vendor/bin/phpcs

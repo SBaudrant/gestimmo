@@ -1,0 +1,14 @@
+upload_sftp:
+    stage: upload
+    tags:
+        - docker
+    only:
+        - tags
+    when: manual
+    variables:
+        backend_zip: backend/gestimmo-backend.zip
+        frontend_zip: frontend-angular/gestimmo-frontend.zip
+    interruptible: true
+    script:
+        - docker run -i --rm -v $(pwd):/root -v /root/.ssh/ MON_REPO/docker/tools/lftp:latest sftp://"${SFTP_USER}":"${SFTP_PWD}"@sftp.a5sys.com:8022 -e "mkdir /share/${CI_COMMIT_REF_NAME}/;put -O /share/${CI_COMMIT_REF_NAME}/ ${backend_zip};quit"
+        - docker run -i --rm -v $(pwd):/root -v /root/.ssh/ MON_REPO/docker/tools/lftp:latest sftp://"${SFTP_USER}":"${SFTP_PWD}"@sftp.a5sys.com:8022 -e "mkdir /share/${CI_COMMIT_REF_NAME}/;put -O /share/${CI_COMMIT_REF_NAME}/ ${frontend_zip};quit"

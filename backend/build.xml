@@ -1,0 +1,26 @@
+<project name="gestimmo-backend" default="zip">
+    <target name="zip">
+        <zip destfile="gestimmo-backend.zip">
+            <fileset dir=".">
+                <exclude name=".idea/**" />
+                <exclude name="config/jwt/**" />
+                <exclude name="docker/**" />
+                <exclude name="fixtures/**" />
+                <exclude name="tests/**" />
+                <exclude name="files/**" />
+                <exclude name="var/cache/*/**" />
+                <exclude name="var/log/*/**" />
+                <exclude name=".env.local" />
+                <exclude name=".env.test" />
+                <exclude name=".web-server-pid" />
+                <exclude name="*.md" />
+                <exclude name="*.zip" />
+                <exclude name="build.xml" />
+                <exclude name="docker-compose*.yml" />
+                <exclude name="docker-entrypoint.sh" />
+                <exclude name="phpunit.xml.dist" />
+                <exclude name="Makefile" />
+            </fileset>
+        </zip>
+    </target>
+</project>

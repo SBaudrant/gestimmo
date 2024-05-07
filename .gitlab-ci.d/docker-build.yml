@@ -1,0 +1,87 @@
+docker-build-backend-base:
+    stage: docker-build-base
+    only:
+        refs:
+            - merge_requests
+        changes:
+            - backend/composer.json
+            - backend/composer.lock
+            - backend/docker/image/php/base/Dockerfile
+    tags:
+        - docker
+    interruptible: true
+    script:
+        - cd backend
+        - make build-base-and-push
+
+docker-build-backend-dev:
+    stage: docker-build
+    only:
+        refs:
+            - merge_requests
+        changes:
+            - backend/composer.json
+            - backend/composer.lock
+            - backend/docker/image/php/base/Dockerfile
+            - backend/docker/image/php/dev/Dockerfile
+    tags:
+        - docker
+    interruptible: true
+    script:
+        - cd backend
+        - make build-dev-and-push
+    needs:
+        - docker-build-backend-base
+
+docker-build-backend-test:
+    stage: docker-build
+    only:
+        refs:
+            - merge_requests
+        changes:
+            - backend/composer.json
+            - backend/composer.lock
+            - backend/docker/image/php/base/Dockerfile
+            - backend/docker/image/php/test/Dockerfile
+    tags:
+        - docker
+    interruptible: true
+    script:
+        - cd backend
+        - make build-test-and-push
+    needs:
+        - job: docker-build-backend-base
+          optional: true
+
+docker-build-frontend-dev:
+    stage: docker-build-base
+    only:
+        refs:
+            - merge_requests
+        changes:
+            - frontend-angular/docker/image/node/dev/Dockerfile
+    tags:
+        - docker
+    interruptible: true
+    script:
+        - cd frontend-angular
+        - make build-dev-and-push
+
+docker-build-frontend-lint:
+    stage: docker-build
+    only:
+        refs:
+            - merge_requests
+        changes:
+            - frontend-angular/docker/image/node/dev/Dockerfile
+            - frontend-angular/docker/image/node/lint/Dockerfile
+            - frontend-angular/package-lock.json
+    tags:
+        - docker
+    interruptible: true
+    script:
+        - cd frontend-angular
+        - make build-lint-and-push
+    needs:
+        - job: docker-build-frontend-dev
+          optional: true

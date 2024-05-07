@@ -1,0 +1,22 @@
+sonar-scanner:
+    stage: lint
+    tags:
+        - docker
+    only:
+        - tags
+    when: manual
+    variables:
+        SONAR_HOST_URL: https://sonarqube.a5sys.com
+    interruptible: true
+    script:
+        - docker run -t --rm -v $(pwd):/srv/src -v /srv/src/node_modules MON_REPO/docker/tools/sonarscanner:latest
+            -Dsonar.host.url="$SONAR_HOST_URL"
+            -Dsonar.projectKey="$CI_PROJECT_NAMESPACE:$CI_PROJECT_NAME"
+            -Dsonar.projectName="$CI_PROJECT_TITLE"
+            -Dsonar.projectVersion="$CI_COMMIT_SHA"
+            -Dsonar.sources=/srv/src
+            -Dsonar.scm.provider=git
+            -Dsonar.gitlab.api_version=v4
+            -Dsonar.gitlab.project_id="$CI_PROJECT_ID"
+            -Dsonar.gitlab.commit_sha="$CI_COMMIT_SHA"
+            -Dsonar.gitlab.ref_name="$CI_COMMIT_REF_NAME"

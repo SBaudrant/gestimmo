@@ -1,0 +1,23 @@
+build_prod_backend:
+    stage: build
+    tags:
+        - docker
+    artifacts:
+        name: "gestimmo-backend-$CI_COMMIT_REF_NAME"
+        expire_in: 7 days
+        paths:
+            - backend/gestimmo-backend.zip
+    only:
+        - tags
+    variables:
+        COMPOSE_PROJECT_NAME: "gestimmo_build_backend-$CI_JOB_ID"
+    script:
+        - cd backend
+        - versionKey="version:"
+        - echo "parameters:"  > ./config/version.yaml
+        - echo "    $versionKey $CI_COMMIT_REF_NAME" >> ./config/version.yaml
+        - make build-prod
+    after_script:
+        - cd backend/
+        - docker-compose --env-file ../.env kill
+        - docker-compose --env-file ../.env down

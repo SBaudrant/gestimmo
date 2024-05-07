@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+    react:
+        build:
+            context: ./docker/image/node/dev/
+            dockerfile: ./Dockerfile
+        tty: true
+        volumes:
+            - .:/app/
+        ports:
+            - "3000:3000"
+        entrypoint: ./docker/entrypoint/react.sh

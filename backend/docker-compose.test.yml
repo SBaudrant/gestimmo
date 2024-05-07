@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  php:
+    image: MON_REPO/gestimmo/gestimmo/backend/test:latest
+    build:
+      context: ./docker/image/php/test/
+      dockerfile: ./Dockerfile
+    depends_on:
+      - postgres
+    volumes:
+      - .:/srv/php
+      - /srv/php/vendor/
+      - /srv/php/bin/
+      - /srv/php/config/jwt/
+    entrypoint: ''
+    environment:
+        XDEBUG_MODE: 'off'
+
+  postgres:
+    image: MON_REPO/docker/tools/postgres:15
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+    postgres_data: ~
