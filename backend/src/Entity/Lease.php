@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Enum\LocationTypeEnum;
 use App\Repository\LeaseRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -27,6 +29,17 @@ class Lease
     #[ORM\ManyToOne(inversedBy: 'leases')]
     #[ORM\JoinColumn(nullable: false)]
     private ?RentalProperty $rentalProperty = null;
+
+    /**
+     * @var Collection<int, Tenant>
+     */
+    #[ORM\ManyToMany(targetEntity: Tenant::class, mappedBy: 'Lease')]
+    private Collection $tenants;
+
+    public function __construct()
+    {
+        $this->tenants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -85,6 +98,33 @@ class Lease
     public function setRentalProperty(?RentalProperty $rentalProperty): static
     {
         $this->rentalProperty = $rentalProperty;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Tenant>
+     */
+    public function getTenants(): Collection
+    {
+        return $this->tenants;
+    }
+
+    public function addTenant(Tenant $tenant): static
+    {
+        if (!$this->tenants->contains($tenant)) {
+            $this->tenants->add($tenant);
+            $tenant->addLease($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTenant(Tenant $tenant): static
+    {
+        if ($this->tenants->removeElement($tenant)) {
+            $tenant->removeLease($this);
+        }
 
         return $this;
     }
