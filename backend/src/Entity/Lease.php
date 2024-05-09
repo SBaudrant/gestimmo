@@ -1,0 +1,91 @@
+<?php
+
+namespace App\Entity;
+
+use App\Enum\LocationTypeEnum;
+use App\Repository\LeaseRepository;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: LeaseRepository::class)]
+class Lease
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $startDate = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $endDate = null;
+
+    #[ORM\Column(type: Types::INTEGER)]
+    private ?LocationTypeEnum $locationType = null;
+
+    #[ORM\ManyToOne(inversedBy: 'leases')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?RentalProperty $rentalProperty = null;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getStartDate(): ?\DateTimeInterface
+    {
+        return $this->startDate;
+    }
+
+    public function setStartDate(\DateTimeInterface $startDate): static
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    public function getEndDate(): ?\DateTimeInterface
+    {
+        return $this->endDate;
+    }
+
+    public function setEndDate(\DateTimeInterface $endDate): static
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of locationType
+     */ 
+    public function getLocationType()
+    {
+        return $this->locationType;
+    }
+
+    /**
+     * Set the value of locationType
+     *
+     * @return  self
+     */ 
+    public function setLocationType($locationType)
+    {
+        $this->locationType = $locationType;
+
+        return $this;
+    }
+
+    public function getRentalProperty(): ?RentalProperty
+    {
+        return $this->rentalProperty;
+    }
+
+    public function setRentalProperty(?RentalProperty $rentalProperty): static
+    {
+        $this->rentalProperty = $rentalProperty;
+
+        return $this;
+    }
+}

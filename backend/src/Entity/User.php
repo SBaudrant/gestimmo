@@ -24,6 +24,8 @@ use App\State\UserInitPasswordRequestProvider;
 use App\State\UserPasswordResetRequestProcessor;
 use App\State\UserUpdatePasswordRequestProcessor;
 use App\State\UserUpdatePasswordRequestProvider;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -139,6 +141,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Table(name: '`user`')]
 #[UniqueEntity(['email'])]
 #[UniqueEntity(['initPasswordToken'])]
+/**
+ * User class reprensents users of the application, the owners of properties. They can additionnaly be admin.
+ */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Column(type: Types::BIGINT)]
@@ -209,6 +214,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: Types::STRING, length: 128, unique: true, nullable: true)]
     private ?string $initPasswordToken = null;
+
+    /**
+     * @var Collection<int, RentalProperty>
+     */
+    #[ORM\ManyToMany(targetEntity: RentalProperty::class, mappedBy: 'owner')]
+    #[Groups([
+        'user:get'
+    ])]
+    private Collection $rentalProperties;
+
+    public function __construct()
+    {
+        $this->rentalProperties = new ArrayCollection();
+    }
 
     public function getEmail(): string
     {
@@ -332,6 +351,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setInitPasswordToken(?string $initPasswordToken): User
     {
         $this->initPasswordToken = $initPasswordToken;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, RentalProperty>
+     */
+    public function getRentalProperties(): Collection
+    {
+        return $this->rentalProperties;
+    }
+
+    public function addRentalProperty(RentalProperty $rentalProperty): static
+    {
+        if (!$this->rentalProperties->contains($rentalProperty)) {
+            $this->rentalProperties->add($rentalProperty);
+            $rentalProperty->addOwner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRentalProperty(RentalProperty $rentalProperty): static
+    {
+        if ($this->rentalProperties->removeElement($rentalProperty)) {
+            $rentalProperty->removeOwner($this);
+        }
 
         return $this;
     }

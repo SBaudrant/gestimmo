@@ -1,8 +1,0 @@
-start_qualif:
-    stage: vcenter
-    when: manual
-    tags:
-        - docker
-    interruptible: true
-    script:
-        - ./scripts/vcenter_turn_on_vm_if_off.sh $VCENTER_HOST $VCENTER_LOGIN $VCENTER_PASSWORD $VCENTER_QUALIF_VM_ID
