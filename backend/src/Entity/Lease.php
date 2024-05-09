@@ -8,22 +8,77 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
+#[ApiResource(
+    operations: [
+        new Get(
+            requirements: ['id' => '\\d+'],
+            normalizationContext: ['groups' => ['tenant:get']],
+            security: 'is_granted(\'GET_ITEM\', object)',
+        ),
+        new Patch(
+            normalizationContext: ['groups' => ['tenant:get']],
+            denormalizationContext: ['groups' => ['tenant:update']],
+            security: 'is_granted(\'PUT_ITEM\', object)',
+            securityPostDenormalize: 'object !== user or object.getRole() === previous_object.getRole()',
+        ),
+        new Delete(
+            security: 'is_granted(\'DELETE_ITEM\', object)',
+        ),
+        new GetCollection(
+            normalizationContext: ['groups' => ['tenant:getAll']],
+            security: 'is_granted(\'GET_COLLECTION\', object)',
+        ),
+        new Post(
+            normalizationContext: ['groups' => ['tenant:get']],
+            denormalizationContext: ['groups' => ['tenant:create']],
+            securityPostDenormalize: 'is_granted(\'POST_COLLECTION\', object)',
+        )
+    ],
+)]
 #[ORM\Entity(repositoryClass: LeaseRepository::class)]
+/**
+ * Lease entity is the rent contract made for a period.
+ */
 class Lease
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups([
+        'lease:get',
+        'lease:getAll',
+        'lease:create',
+        'lease:update',
+    ])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups([
+        'lease:get',
+        'lease:getAll',
+        'lease:create',
+        'lease:update',
+    ])]
     private ?\DateTimeInterface $startDate = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups([
+        'lease:get',
+        'lease:getAll',
+        'lease:create',
+        'lease:update',
+    ])]
     private ?\DateTimeInterface $endDate = null;
 
     #[ORM\Column(type: Types::INTEGER)]
+    #[Groups([
+        'lease:get',
+        'lease:getAll',
+        'lease:create',
+        'lease:update',
+    ])]
     private ?LocationTypeEnum $locationType = null;
 
     #[ORM\ManyToOne(inversedBy: 'leases')]
@@ -34,9 +89,21 @@ class Lease
      * @var Collection<int, Tenant>
      */
     #[ORM\ManyToMany(targetEntity: Tenant::class, mappedBy: 'Lease')]
+    #[Groups([
+        'lease:get',
+        'lease:getAll',
+        'lease:create',
+        'lease:update',
+    ])]
     private Collection $tenants;
 
     #[ORM\Column]
+    #[Groups([
+        'lease:get',
+        'lease:getAll',
+        'lease:create',
+        'lease:update',
+    ])]
     private ?int $paymentDay = null;
 
     public function __construct()
