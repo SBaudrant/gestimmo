@@ -36,6 +36,9 @@ class Lease
     #[ORM\ManyToMany(targetEntity: Tenant::class, mappedBy: 'Lease')]
     private Collection $tenants;
 
+    #[ORM\Column]
+    private ?int $paymentDay = null;
+
     public function __construct()
     {
         $this->tenants = new ArrayCollection();
@@ -125,6 +128,18 @@ class Lease
         if ($this->tenants->removeElement($tenant)) {
             $tenant->removeLease($this);
         }
+
+        return $this;
+    }
+
+    public function getPaymentDay(): ?int
+    {
+        return $this->paymentDay;
+    }
+
+    public function setPaymentDay(int $paymentDay): static
+    {
+        $this->paymentDay = $paymentDay;
 
         return $this;
     }
