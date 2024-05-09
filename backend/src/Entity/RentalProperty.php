@@ -85,7 +85,6 @@ class RentalProperty
     ])]
     private ?Address $address = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[Groups([
         'rental_property:get',
         'rental_property:getAll',
@@ -158,6 +157,7 @@ class RentalProperty
      */
     public function getCurrentLeases(): ?Collection
     {
+        // @Todo make the logic to get current leases.
         return $this->currentLeases;
     }
 
@@ -165,7 +165,6 @@ class RentalProperty
     {
         if (!$this->currentLeases->contains($lease)) {
             $this->currentLeases->add($lease);
-            $lease->setRentalProperty($this);
         }
 
         return $this;
@@ -173,12 +172,7 @@ class RentalProperty
 
     public function removeCurrentLease(Lease $lease): self
     {
-        if ($this->currentLeases->removeElement($lease)) {
-            // set the owning side to null (unless already changed)
-            if ($lease->getRentalProperty() === $this) {
-                $lease->setRentalProperty(null);
-            }
-        }
+        $this->currentLeases->removeElement($lease);
 
         return $this;
     }

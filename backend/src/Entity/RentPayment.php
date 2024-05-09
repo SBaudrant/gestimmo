@@ -3,11 +3,16 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use App\Repository\RentPaymentRepository;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Serializer\Annotation\Groups;
+use App\Repository\RentPaymentRepository;
 use Doctrine\ORM\Mapping as ORM;
 use App\Enum\RentPaymentStatusEnum;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource(
     operations: [
