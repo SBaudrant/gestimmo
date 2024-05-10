@@ -65,10 +65,12 @@ class RentalPropertyFixtures extends Fixture implements DependentFixtureInterfac
 
                 $firstLeaseStartDate = $this->faker->dateTimeThisYear();
 
+                $firstLeaseEndDate = (new \DateTime($firstLeaseStartDate->format('Y-m-d')));
+
                 if ($locationType == LocationTypeEnum::FURNISHED) {
-                    $firstLeaseEndDate = $firstLeaseStartDate->modify('+1 year');
+                    $firstLeaseEndDate->modify('+1 year');
                 } else {
-                    $firstLeaseEndDate = $firstLeaseStartDate->modify('+3 years');
+                    $firstLeaseEndDate->modify('+3 years');
                 }
 
                 $paymentDay = rand(1, 28);
@@ -89,22 +91,26 @@ class RentalPropertyFixtures extends Fixture implements DependentFixtureInterfac
                 $olderLeases = rand(0, 3);
 
                 echo "        Generation of $olderLeases older lease(s) for Rental property : {$rentalProperty->getLabel()}\n";
+                $lastStartDate = $firstLeaseStartDate;
 
                 for ($j = 0; $j < $olderLeases; $j++) {
 
-                    $endDate = $this->faker->dateTimeBetween('-2 months', $firstLeaseEndDate);
+                    $endDate = $this->faker->dateTimeInInterval($lastStartDate, '-2 months');
+                    
                     if ($locationType === LocationTypeEnum::FURNISHED) {
                         $leaseDuration = $this->faker->numberBetween(6, 12);
-                        $startDate = $this->faker->dateTimeInInterval("-$leaseDuration months", );
                     } else {
                         $leaseDuration = $this->faker->numberBetween(12, 36);
-                        $startDate = $this->faker->dateTimeBetween("-$leaseDuration months", $firstLeaseEndDate);
                     }
+
+                    $startDate = (new \DateTime($endDate->format('Y-m-d')))->modify("-$leaseDuration months");
 
                     $lease = $this->generateLease($startDate, $endDate, $paymentDay, $rentFees, $rentBase, $locationType);
                     $rentalProperty->addLease($lease);
 
                     $manager->persist($lease);
+
+                    $lastStartDate = $startDate;
                 }
 
             }
