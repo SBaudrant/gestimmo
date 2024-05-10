@@ -114,6 +114,12 @@ fixture: ##Chargement des fixtures
 	$(call docker-compose-user-exec, php bin/console doctrine:database:drop --if-exists --force)
 	$(call docker-compose-user-exec, php bin/console doctrine:database:create)
 	$(call docker-compose-user-exec, php bin/console doctrine:schema:create)
+	$(call docker-compose-user-exec, php bin/console doctrine:fixtures:load -n)
+
+alicefixture: ##Chargement des fixtures
+	$(call docker-compose-user-exec, php bin/console doctrine:database:drop --if-exists --force)
+	$(call docker-compose-user-exec, php bin/console doctrine:database:create)
+	$(call docker-compose-user-exec, php bin/console doctrine:schema:create)
 	$(call docker-compose-user-exec, php bin/console hautelook:fixtures:load -n)
 
 entities: ##Génère les getter/setter appropriés pour les entités

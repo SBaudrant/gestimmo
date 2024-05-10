@@ -57,6 +57,8 @@ class Lease
         'lease:getAll',
         'lease:create',
         'lease:update',
+        'rental_property:get',
+        'rental_property:getAll',
     ])]
     private ?int $id = null;
 
@@ -66,6 +68,8 @@ class Lease
         'lease:getAll',
         'lease:create',
         'lease:update',
+        'rental_property:get',
+        'rental_property:getAll',
     ])]
     private ?\DateTimeInterface $startDate = null;
 
@@ -75,17 +79,21 @@ class Lease
         'lease:getAll',
         'lease:create',
         'lease:update',
+        'rental_property:get',
+        'rental_property:getAll',
     ])]
     private ?\DateTimeInterface $endDate = null;
 
-    #[ORM\Column(type: Types::INTEGER)]
+    #[ORM\Column(type: "integer", enumType: LocationTypeEnum::class)]
     #[Groups([
         'lease:get',
         'lease:getAll',
         'lease:create',
         'lease:update',
+        'rental_property:get',
+        'rental_property:getAll',
     ])]
-    private ?LocationTypeEnum $locationType = null;
+    private ?LocationTypeEnum $locationType = LocationTypeEnum::UNFURNISHED;
 
     #[ORM\ManyToOne(inversedBy: 'leases')]
     #[ORM\JoinColumn(nullable: false)]
@@ -94,12 +102,14 @@ class Lease
     /**
      * @var Collection<int, Tenant>
      */
-    #[ORM\ManyToMany(targetEntity: Tenant::class, mappedBy: 'Lease')]
+    #[ORM\ManyToMany(targetEntity: Tenant::class, mappedBy: 'Lease', cascade: ["persist", "remove"])]
     #[Groups([
         'lease:get',
         'lease:getAll',
         'lease:create',
         'lease:update',
+        'rental_property:get',
+        'rental_property:getAll',
     ])]
     private Collection $tenants;
 
@@ -109,8 +119,16 @@ class Lease
         'lease:getAll',
         'lease:create',
         'lease:update',
+        'rental_property:get',
+        'rental_property:getAll',
     ])]
     private ?int $paymentDay = null;
+
+    #[ORM\Column]
+    private ?float $rentBase = null;
+
+    #[ORM\Column]
+    private ?float $rentFees = null;
 
     public function __construct()
     {
@@ -148,8 +166,8 @@ class Lease
 
     /**
      * Get the value of locationType
-     */ 
-    public function getLocationType()
+     */
+    public function getLocationType(): LocationTypeEnum
     {
         return $this->locationType;
     }
@@ -158,8 +176,8 @@ class Lease
      * Set the value of locationType
      *
      * @return  self
-     */ 
-    public function setLocationType($locationType)
+     */
+    public function setLocationType(LocationTypeEnum $locationType)
     {
         $this->locationType = $locationType;
 
@@ -213,6 +231,30 @@ class Lease
     public function setPaymentDay(int $paymentDay): static
     {
         $this->paymentDay = $paymentDay;
+
+        return $this;
+    }
+
+    public function getRentBase(): ?float
+    {
+        return $this->rentBase;
+    }
+
+    public function setRentBase(float $rentBase): static
+    {
+        $this->rentBase = $rentBase;
+
+        return $this;
+    }
+
+    public function getRentFees(): ?float
+    {
+        return $this->rentFees;
+    }
+
+    public function setRentFees(float $rentFees): static
+    {
+        $this->rentFees = $rentFees;
 
         return $this;
     }

@@ -45,6 +45,7 @@
         "webmozart/assert": "^1.11"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.6",
         "hautelook/alice-bundle": "^2.12",
         "justinrainbow/json-schema": "^5.2.12",
         "maglnet/composer-require-checker": "^4.6",

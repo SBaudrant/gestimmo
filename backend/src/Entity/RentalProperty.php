@@ -104,6 +104,15 @@ class RentalProperty
     ])]
     private Collection $leases;
 
+    #[ORM\Column]
+    private ?float $proposedRentBase = null;
+
+    #[ORM\Column]
+    private ?float $proposedRentFees = null;
+
+    #[ORM\Column]
+    private ?int $proposedPaymentDay = null;
+
     public function __construct()
     {
         $this->owners = new ArrayCollection();
@@ -203,6 +212,42 @@ class RentalProperty
                 $lease->setRentalProperty(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProposedRentBase(): ?float
+    {
+        return $this->proposedRentBase;
+    }
+
+    public function setProposedRentBase(float $proposedRentBase): static
+    {
+        $this->proposedRentBase = $proposedRentBase;
+
+        return $this;
+    }
+
+    public function getProposedRentFees(): ?float
+    {
+        return $this->proposedRentFees;
+    }
+
+    public function setProposedRentFees(float $proposedRentFees): static
+    {
+        $this->proposedRentFees = $proposedRentFees;
+
+        return $this;
+    }
+
+    public function getProposedPaymentDay(): ?int
+    {
+        return $this->proposedPaymentDay;
+    }
+
+    public function setProposedPaymentDay(int $proposedPaymentDay): static
+    {
+        $this->proposedPaymentDay = $proposedPaymentDay;
 
         return $this;
     }
