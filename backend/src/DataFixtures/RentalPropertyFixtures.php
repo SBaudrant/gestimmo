@@ -32,22 +32,27 @@ class RentalPropertyFixtures extends Fixture implements DependentFixtureInterfac
         // Générer les propriétés locatives, baux et locataires
         foreach ($users as $user) {
             $numProperties = rand(1, 4);
-            echo "Generate $numProperties for {$user->getFirstname()} {$user->getLastname()}\n"; 
-            for ($i = 0; $i < $numProperties; $i++) {
+            $globalPropertyCount = 0;
 
-                $property = (new RentalProperty())
+            echo "Generate $numProperties rental properties for {$user->getFirstname()} {$user->getLastname()}\n";
+
+            for ($i = 1; $i <= $numProperties; $i++) {
+                echo "    Generation appartment N°$i\n";
+                
+                $globalPropertyCount++;
+
+                $rentalProperty = (new RentalProperty())
                     ->setAddress($this->generateAddress())
+                    ->setLabel("Appartement $globalPropertyCount")
                     ->setProposedPaymentDay(rand(1, 28))
                     ->setProposedRentFees(rand(3, 30) * 5)
                     ->setProposedRentBase(rand(60, 80) * 5)
                     ->addOwner($user)
                 ;
 
-                $manager->persist($property);
+                $manager->persist($rentalProperty);
 
                 $locationType = $this->faker->randomElement(LocationTypeEnum::class);
-
-                $numberLeases = rand(1, 4);
 
                 // 85% to be Single Tenant or couple Tenant.
                 $isSharedLease = $this->faker->optional(0.85, true)->boolean(false);
@@ -70,28 +75,37 @@ class RentalPropertyFixtures extends Fixture implements DependentFixtureInterfac
                 $rentFees = rand(3, 30) * 5;
                 $rentBase = rand(60, 80) * 5;
 
-                $lease = (new Lease())
-                    ->setStartDate($firstLeaseStartDate)
-                    ->setEndDate($firstLeaseEndDate)
-                    ->setPaymentDay($paymentDay)
-                    ->setRentFees($rentFees)
-                    ->setRentBase($rentBase)
-                    ->setLocationType($locationType) // Modifiez si nécessaire
-                    ->addTenant($this->generateTenant())
-                ;
+                echo "        Generation of the actual lease for Rental property : {$rentalProperty->getLabel()}\n";
+                $lease = $this->generateLease($firstLeaseStartDate, $firstLeaseEndDate, $paymentDay, $rentFees, $rentBase, $locationType);
 
                 if ($isCouple) {
                     $lease->addTenant($this->generateTenant());
                 }
 
-                $property->addLease($lease);
+                $rentalProperty->addLease($lease);
 
                 $manager->persist($lease);
 
-                for ($i = 0; $i < $numberLeases - 1; $i++) {
+                $olderLeases = rand(0, 3);
 
+                echo "        Generation of $olderLeases older lease(s) for Rental property : {$rentalProperty->getLabel()}\n";
+
+                for ($j = 0; $j < $olderLeases; $j++) {
+
+                    $endDate = $this->faker->dateTimeBetween('-2 months', $firstLeaseEndDate);
+                    if ($locationType === LocationTypeEnum::FURNISHED) {
+                        $leaseDuration = $this->faker->numberBetween(6, 12);
+                        $startDate = $this->faker->dateTimeInInterval("-$leaseDuration months", );
+                    } else {
+                        $leaseDuration = $this->faker->numberBetween(12, 36);
+                        $startDate = $this->faker->dateTimeBetween("-$leaseDuration months", $firstLeaseEndDate);
+                    }
+
+                    $lease = $this->generateLease($startDate, $endDate, $paymentDay, $rentFees, $rentBase, $locationType);
+                    $rentalProperty->addLease($lease);
+
+                    $manager->persist($lease);
                 }
-
 
             }
         }
@@ -103,9 +117,9 @@ class RentalPropertyFixtures extends Fixture implements DependentFixtureInterfac
     {
         // Implémentez votre générateur d'adresse ici
         return (new Address())
-            ->setCity($this->faker->city)
-            ->setPostalCode($this->faker->postcode)
-            ->setStreet($this->faker->streetAddress)
+            ->setCity($this->faker->city())
+            ->setPostalCode($this->faker->postcode())
+            ->setStreet($this->faker->streetAddress())
         ;
     }
 
@@ -117,8 +131,32 @@ class RentalPropertyFixtures extends Fixture implements DependentFixtureInterfac
             ->setPhone($this->faker->phoneNumber())
             ->setEmail($this->faker->email())
         ;
-        
+
         return $tenant;
+    }
+
+    /**
+     * Generate a 
+     *
+     * @param \DateTime $startDate
+     * @param \DateTime $endDate
+     * @param integer $paymentDay
+     * @param float $rentFees
+     * @param float $rentBase
+     * @param LocationTypeEnum $locationType
+     * @return Lease
+     */
+    private function generateLease(\DateTime $startDate, \DateTime $endDate, int $paymentDay, float $rentFees, float $rentBase, LocationTypeEnum $locationType = LocationTypeEnum::UNFURNISHED): Lease
+    {
+        return (new Lease())
+            ->setStartDate($startDate)
+            ->setEndDate($endDate)
+            ->setPaymentDay($paymentDay)
+            ->setRentFees($rentFees)
+            ->setRentBase($rentBase)
+            ->setLocationType($locationType) // Modifiez si nécessaire
+            ->addTenant($this->generateTenant())
+        ;
     }
 
     public function getDependencies()

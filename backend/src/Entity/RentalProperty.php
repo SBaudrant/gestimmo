@@ -113,6 +113,9 @@ class RentalProperty
     #[ORM\Column]
     private ?int $proposedPaymentDay = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $label = null;
+
     public function __construct()
     {
         $this->owners = new ArrayCollection();
@@ -248,6 +251,18 @@ class RentalProperty
     public function setProposedPaymentDay(int $proposedPaymentDay): static
     {
         $this->proposedPaymentDay = $proposedPaymentDay;
+
+        return $this;
+    }
+
+    public function getLabel(): ?string
+    {
+        return $this->label;
+    }
+
+    public function setLabel(string $label): static
+    {
+        $this->label = $label;
 
         return $this;
     }
