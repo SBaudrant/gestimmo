@@ -105,6 +105,13 @@ class RentPayment
     ])]
     private RentPaymentStatusEnum $status = RentPaymentStatusEnum::PENDING;
 
+    #[ORM\ManyToOne(inversedBy: 'rentPayments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Lease $lease = null;
+
+    #[ORM\Column]
+    private ?float $fees = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -174,6 +181,30 @@ class RentPayment
     public function setStatus($status)
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getLease(): ?Lease
+    {
+        return $this->lease;
+    }
+
+    public function setLease(?Lease $lease): static
+    {
+        $this->lease = $lease;
+
+        return $this;
+    }
+
+    public function getFees(): ?float
+    {
+        return $this->fees;
+    }
+
+    public function setFees(float $fees): static
+    {
+        $this->fees = $fees;
 
         return $this;
     }

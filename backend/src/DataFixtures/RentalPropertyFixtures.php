@@ -3,8 +3,11 @@
 namespace App\DataFixtures;
 
 use App\Entity\Address;
+use App\Entity\RentPayment;
 use App\Enum\LocationTypeEnum;
+use App\Enum\RentPaymentStatusEnum;
 use App\Repository\UserRepository;
+use DateTime;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -17,7 +20,6 @@ use Faker\Generator as FakerGenerator;
 
 class RentalPropertyFixtures extends Fixture implements DependentFixtureInterface
 {
-
     private FakerGenerator $faker;
 
     public function load(ObjectManager $manager)
@@ -38,7 +40,7 @@ class RentalPropertyFixtures extends Fixture implements DependentFixtureInterfac
 
             for ($i = 1; $i <= $numProperties; $i++) {
                 echo "    Generation appartment N°$i\n";
-                
+
                 $globalPropertyCount++;
 
                 $rentalProperty = (new RentalProperty())
@@ -59,13 +61,13 @@ class RentalPropertyFixtures extends Fixture implements DependentFixtureInterfac
                 $isCouple = null;
 
                 if (!$isSharedLease) {
-                    // 45% to be a lease to a couple. 65% to be to single person. 
+                    // 35% to be a lease to a couple. 65% to be to single person. 
                     $isCouple = $this->faker->optional(0.65, true)->boolean(false);
                 }
 
                 $firstLeaseStartDate = $this->faker->dateTimeThisYear();
 
-                $firstLeaseEndDate = (new \DateTime($firstLeaseStartDate->format('Y-m-d')));
+                $firstLeaseEndDate = (new DateTime($firstLeaseStartDate->format('Y-m-d')));
 
                 if ($locationType == LocationTypeEnum::FURNISHED) {
                     $firstLeaseEndDate->modify('+1 year');
@@ -96,23 +98,23 @@ class RentalPropertyFixtures extends Fixture implements DependentFixtureInterfac
                 for ($j = 0; $j < $olderLeases; $j++) {
 
                     $endDate = $this->faker->dateTimeInInterval($lastStartDate, '-2 months');
-                    
+
                     if ($locationType === LocationTypeEnum::FURNISHED) {
                         $leaseDuration = $this->faker->numberBetween(6, 12);
                     } else {
                         $leaseDuration = $this->faker->numberBetween(12, 36);
                     }
 
-                    $startDate = (new \DateTime($endDate->format('Y-m-d')))->modify("-$leaseDuration months");
+                    $startDate = (new DateTime($endDate->format('Y-m-d')))->modify("-$leaseDuration months");
 
                     $lease = $this->generateLease($startDate, $endDate, $paymentDay, $rentFees, $rentBase, $locationType);
                     $rentalProperty->addLease($lease);
 
                     $manager->persist($lease);
-
+                    
                     $lastStartDate = $startDate;
                 }
-
+                $manager->flush();
             }
         }
 
@@ -121,10 +123,9 @@ class RentalPropertyFixtures extends Fixture implements DependentFixtureInterfac
 
     private function generateAddress()
     {
-        // Implémentez votre générateur d'adresse ici
         return (new Address())
             ->setCity($this->faker->city())
-            ->setPostalCode($this->faker->postcode())
+            ->setPostalCode(str_replace(' ', '', $this->faker->postcode()))
             ->setStreet($this->faker->streetAddress())
         ;
     }
@@ -144,17 +145,17 @@ class RentalPropertyFixtures extends Fixture implements DependentFixtureInterfac
     /**
      * Generate a 
      *
-     * @param \DateTime $startDate
-     * @param \DateTime $endDate
+     * @param DateTime $startDate
+     * @param DateTime $endDate
      * @param integer $paymentDay
      * @param float $rentFees
      * @param float $rentBase
      * @param LocationTypeEnum $locationType
      * @return Lease
      */
-    private function generateLease(\DateTime $startDate, \DateTime $endDate, int $paymentDay, float $rentFees, float $rentBase, LocationTypeEnum $locationType = LocationTypeEnum::UNFURNISHED): Lease
+    private function generateLease(DateTime $startDate, DateTime $endDate, int $paymentDay, float $rentFees, float $rentBase, LocationTypeEnum $locationType = LocationTypeEnum::UNFURNISHED): Lease
     {
-        return (new Lease())
+        $lease = (new Lease())
             ->setStartDate($startDate)
             ->setEndDate($endDate)
             ->setPaymentDay($paymentDay)
@@ -162,6 +163,46 @@ class RentalPropertyFixtures extends Fixture implements DependentFixtureInterfac
             ->setRentBase($rentBase)
             ->setLocationType($locationType) // Modifiez si nécessaire
             ->addTenant($this->generateTenant())
+        ;
+
+        $today = new DateTime();
+        $rentPaymentStartDate = clone $startDate;
+        
+        
+        while($rentPaymentStartDate < $today && $rentPaymentStartDate < $endDate ) {
+            
+            $rentPaymentEndDate = (clone $rentPaymentStartDate)->modify('last day of this month');
+
+            $isPayed = ( $paymentDay < $today->format('d') && $today->format('Y-m') == $rentPaymentStartDate->format('Y-m') ) || $rentPaymentEndDate < $today;
+            
+            $status = $isPayed
+                ? RentPaymentStatusEnum::PAYED 
+                : RentPaymentStatusEnum::PENDING
+            ;
+            
+            $payedAt = $isPayed 
+                ? DateTime::createFromFormat('Y-m-d', $rentPaymentStartDate->format('Y-m-') . $paymentDay)
+                : null
+            ;
+
+            $rentPayment = $this->generateRentPayment(clone $rentPaymentStartDate, $rentPaymentEndDate, $rentBase + $rentFees, $rentFees, $payedAt, $status);
+
+            $lease->addRentPayment($rentPayment);
+            $rentPaymentStartDate->modify('first day of next month');
+
+        }
+
+        return $lease;
+    }
+
+    private function generateRentPayment($startDate, $endDate, $amount, $fees, $payedAt, $status){
+        return (new RentPayment())
+            ->setStartDate($startDate)
+            ->setEndDate($endDate)
+            ->setAmount($amount)
+            ->setFees($fees)
+            ->setPayedAt($payedAt)
+            ->setStatus($status)
         ;
     }
 

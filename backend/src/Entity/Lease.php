@@ -130,9 +130,16 @@ class Lease
     #[ORM\Column]
     private ?float $rentFees = null;
 
+    /**
+     * @var Collection<int, RentPayment>
+     */
+    #[ORM\OneToMany(mappedBy: 'lease', targetEntity: RentPayment::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
+    private Collection $rentPayments;
+
     public function __construct()
     {
         $this->tenants = new ArrayCollection();
+        $this->rentPayments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -255,6 +262,36 @@ class Lease
     public function setRentFees(float $rentFees): static
     {
         $this->rentFees = $rentFees;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, RentPayment>
+     */
+    public function getRentPayments(): Collection
+    {
+        return $this->rentPayments;
+    }
+
+    public function addRentPayment(RentPayment $rentPayment): static
+    {
+        if (!$this->rentPayments->contains($rentPayment)) {
+            $this->rentPayments->add($rentPayment);
+            $rentPayment->setLease($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRentPayment(RentPayment $rentPayment): static
+    {
+        if ($this->rentPayments->removeElement($rentPayment)) {
+            // set the owning side to null (unless already changed)
+            if ($rentPayment->getLease() === $this) {
+                $rentPayment->setLease(null);
+            }
+        }
 
         return $this;
     }
