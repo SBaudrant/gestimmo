@@ -55,14 +55,17 @@ build-prod: ##Génération du zip de prod du frontend
 # Outils
 # ------
 
-exec-cmd: ##Lancement d'une commande sur le frontend (make run-cmd CMD="ls .")
-	docker-compose exec react $(CMD)
+cmd: ##Lancement d'une commande sur le frontend (make run-cmd CMD="ls .")
+	docker-compose exec --user ${USER_ID}:${GROUP_ID} react $(CMD)
 
-exec-root-bash: ##Ouvre un terminal bash sur le frontend (pour composer, psalm, phpstan, phpcs)
-	docker-compose exec react sh
+root-cmd: ##Lancement d'une commande sur le frontend (make run-cmd CMD="ls .")
+	docker-compose exec react $(CMD)
 
 bash: ##Ouvre un terminal bash sur le frontend
 	docker compose exec --user ${USER_ID}:${GROUP_ID} react sh
+
+root-bash: ##Ouvre un terminal bash sur le frontend (pour composer, psalm, phpstan, phpcs)
+	docker-compose exec react sh
 
 i18n: ##i18n
 	docker-compose exec react npm run extract
