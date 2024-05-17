@@ -1,3 +1,3 @@
 #!/bin/sh
-NG_CLI_ANALYTICS=off npm install
-exec npm start -- --progress=false
+NG_CLI_ANALYTICS=off yarn install
+exec yarn start -- --progress=false

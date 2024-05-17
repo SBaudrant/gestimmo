@@ -101,7 +101,7 @@ exec-root-cmd: ##Lancement d'une commande sur le backend (make run-cmd CMD="ls .
 exec-root-bash: ##Ouvre un terminal bash sur le backend (pour composer, psalm, phpstan, phpcs)
 	docker compose exec php sh
 
-exec-bash: ##Ouvre un terminal bash sur le backend
+bash: ##Ouvre un terminal bash sur le backend
 	docker compose exec --user ${USER_ID}:${GROUP_ID} php sh
 
 migration: ##Création des migrations Doctrine
@@ -111,6 +111,12 @@ migrate: ##Création des migrations Doctrine
 	$(call docker-compose-user-exec, php php bin/console doctrine:migrations:migrate --no-interaction)
 
 fixture: ##Chargement des fixtures
+	$(call docker-compose-user-exec, php bin/console doctrine:database:drop --if-exists --force)
+	$(call docker-compose-user-exec, php bin/console doctrine:database:create)
+	$(call docker-compose-user-exec, php bin/console doctrine:schema:create)
+	$(call docker-compose-user-exec, php bin/console doctrine:fixtures:load -n)
+
+alicefixture: ##Chargement des fixtures
 	$(call docker-compose-user-exec, php bin/console doctrine:database:drop --if-exists --force)
 	$(call docker-compose-user-exec, php bin/console doctrine:database:create)
 	$(call docker-compose-user-exec, php bin/console doctrine:schema:create)

@@ -218,7 +218,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, RentalProperty>
      */
-    #[ORM\ManyToMany(targetEntity: RentalProperty::class, mappedBy: 'owner')]
+    #[ORM\ManyToMany(targetEntity: RentalProperty::class, mappedBy: 'owners')]
     #[Groups([
         'user:get'
     ])]

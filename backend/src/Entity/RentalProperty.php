@@ -48,6 +48,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 
 #[ORM\Entity(repositoryClass: RentalPropertyRepository::class)]
+/**
+ * Rental property entity is the appartement or the house used to be rented.
+ */
 class RentalProperty
 {
     #[ORM\Column(type: Types::BIGINT)]
@@ -79,18 +82,15 @@ class RentalProperty
         'rental_property:getAll',
         'rental_property:create',
         'rental_property:update',
-        'user:get'
     ])]
     private ?Address $address = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[Groups([
         'rental_property:get',
         'rental_property:getAll',
         'rental_property:update',
-        'user:get'
     ])]
-    private ?Lease $currentLease = null;
+    private Collection $currentLeases;
 
     /**
      * @var Collection<int, Lease>
@@ -104,9 +104,22 @@ class RentalProperty
     ])]
     private Collection $leases;
 
+    #[ORM\Column]
+    private ?float $proposedRentBase = null;
+
+    #[ORM\Column]
+    private ?float $proposedRentFees = null;
+
+    #[ORM\Column]
+    private ?int $proposedPaymentDay = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $label = null;
+
     public function __construct()
     {
         $this->owners = new ArrayCollection();
+        $this->currentLeases = new ArrayCollection();
         $this->leases = new ArrayCollection();
     }
 
@@ -123,7 +136,7 @@ class RentalProperty
         return $this->owners;
     }
 
-    public function addOwner(User $owner): static
+    public function addOwner(User $owner): self
     {
         if (!$this->owners->contains($owner)) {
             $this->owners->add($owner);
@@ -132,7 +145,7 @@ class RentalProperty
         return $this;
     }
 
-    public function removeOwner(User $owner): static
+    public function removeOwner(User $owner): self
     {
         $this->owners->removeElement($owner);
 
@@ -144,21 +157,34 @@ class RentalProperty
         return $this->address;
     }
 
-    public function setAddress(Address $address): static
+    public function setAddress(Address $address): self
     {
         $this->address = $address;
 
         return $this;
     }
 
-    public function getCurrentLease(): ?Lease
+    /**
+     * @return Collection<int, Lease>
+     */
+    public function getCurrentLeases(): ?Collection
     {
-        return $this->currentLease;
+        // @Todo make the logic to get current leases.
+        return $this->currentLeases;
     }
 
-    public function setCurrentLease(?Lease $currentLease): static
+    public function addCurrentLease(Lease $lease): self
     {
-        $this->currentLease = $currentLease;
+        if (!$this->currentLeases->contains($lease)) {
+            $this->currentLeases->add($lease);
+        }
+
+        return $this;
+    }
+
+    public function removeCurrentLease(Lease $lease): self
+    {
+        $this->currentLeases->removeElement($lease);
 
         return $this;
     }
@@ -171,7 +197,7 @@ class RentalProperty
         return $this->leases;
     }
 
-    public function addLease(Lease $lease): static
+    public function addLease(Lease $lease): self
     {
         if (!$this->leases->contains($lease)) {
             $this->leases->add($lease);
@@ -181,7 +207,7 @@ class RentalProperty
         return $this;
     }
 
-    public function removeLease(Lease $lease): static
+    public function removeLease(Lease $lease): self
     {
         if ($this->leases->removeElement($lease)) {
             // set the owning side to null (unless already changed)
@@ -189,6 +215,54 @@ class RentalProperty
                 $lease->setRentalProperty(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProposedRentBase(): ?float
+    {
+        return $this->proposedRentBase;
+    }
+
+    public function setProposedRentBase(float $proposedRentBase): static
+    {
+        $this->proposedRentBase = $proposedRentBase;
+
+        return $this;
+    }
+
+    public function getProposedRentFees(): ?float
+    {
+        return $this->proposedRentFees;
+    }
+
+    public function setProposedRentFees(float $proposedRentFees): static
+    {
+        $this->proposedRentFees = $proposedRentFees;
+
+        return $this;
+    }
+
+    public function getProposedPaymentDay(): ?int
+    {
+        return $this->proposedPaymentDay;
+    }
+
+    public function setProposedPaymentDay(int $proposedPaymentDay): static
+    {
+        $this->proposedPaymentDay = $proposedPaymentDay;
+
+        return $this;
+    }
+
+    public function getLabel(): ?string
+    {
+        return $this->label;
+    }
+
+    public function setLabel(string $label): static
+    {
+        $this->label = $label;
 
         return $this;
     }
