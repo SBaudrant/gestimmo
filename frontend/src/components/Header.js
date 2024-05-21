@@ -17,8 +17,8 @@ import {
     Stack,
 } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
-
-const Links = ['Dashboard', 'Projects', 'Team']
+import Router from '../router';
+import { SiteLinks } from '../router';
 
 const NavLink = (props) => {
     const { children } = props
@@ -33,7 +33,8 @@ const NavLink = (props) => {
                 textDecoration: 'none',
                 bg: useColorModeValue('gray.200', 'gray.700'),
             }}
-            href={'#'}>
+            href={props.link}
+            {...props}>
             {children}
         </Box>
     )
@@ -45,6 +46,8 @@ const isLoggedIn = () => {
 
 function Header() {
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const links = Object.values(SiteLinks)
 
     return (
         <>
@@ -60,8 +63,8 @@ function Header() {
                     <HStack spacing={8} alignItems={'center'}>
                         <Box>Logo</Box>
                         <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
-                            {Links.map((link) => (
-                                <NavLink key={link}>{link}</NavLink>
+                            {links.map((link) => (
+                                <NavLink key={link.label} link={link.url}>{link.label}</NavLink>
                             ))}
                         </HStack>
                     </HStack>
@@ -120,13 +123,14 @@ function Header() {
                 {isOpen ? (
                     <Box pb={4} display={{ md: 'none' }}>
                         <Stack as={'nav'} spacing={4}>
-                            {Links.map((link) => (
-                                <NavLink key={link}>{link}</NavLink>
+                            {links.map((link) => (
+                                <NavLink key={link.label} link={link.url}>{link.label}</NavLink>
                             ))}
                         </Stack>
                     </Box>
                 ) : null}
             </Box>
+
         </>
     )
 }
