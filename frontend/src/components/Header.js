@@ -15,10 +15,12 @@ import {
     useDisclosure,
     useColorModeValue,
     Stack,
+    Container,
 } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import Router from '../router';
 import { SiteLinks } from '../router';
+import { Outlet } from 'react-router-dom';
 
 const NavLink = (props) => {
     const { children } = props
@@ -130,6 +132,10 @@ function Header() {
                     </Box>
                 ) : null}
             </Box>
+            
+            {/* <Container maxW={'7xl'}> */}
+                <Outlet />
+            {/* </Container> */}
 
         </>
     )

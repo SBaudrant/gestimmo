@@ -1,13 +1,15 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import { Header } from './components/Header';
 import Router from './router';
+import AuthProvider from './providers/AuthProvider';
 
 
 function App() {
   return (
-    <ChakraProvider>
-      <Router />
-    </ChakraProvider>
+    <AuthProvider>
+      <ChakraProvider>
+        <Router />
+      </ChakraProvider>
+    </AuthProvider>
   );
 }
 
