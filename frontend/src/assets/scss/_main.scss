@@ -1,0 +1,57 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+@import './fonts';
+@import './scroll';
+@import './helpers';
+@import './form';
+@import './layout';
+@import './sidebar';
+@import './table';
+@import './spinner';
+
+//MATERIAL OVERRIDE
+@import './material/mat-button';
+@import './material/mat-card';
+@import './material/mat-dialog';
+@import './material/mat-fab';
+@import './material/mat-form-field';
+@import './material/mat-snackbar';
+@import './material/mat-table';
+@import './material/mat-toolbar';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-color);
+  font-size: $fz-global;
+}
+
+hr {
+  margin-bottom: 2.4rem;
+}
+
+blockquote {
+  padding: 16px;
+  margin: 0;
+  width: 100%;
+  border-radius: 4px;
+  font-style: italic;
+  background: var(--color-lightgrey);
+}
+
+code {
+  word-break: break-word;
+}
+
+.container {
+  margin-top: 2.4rem + $h-toolbar;
+}

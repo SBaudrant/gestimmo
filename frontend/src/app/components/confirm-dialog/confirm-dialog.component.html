@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>
+  {{ title }}
+</h1>
+<button *ngIf="displayCloseButton" class="mat-dialog-close" mat-icon-button mat-dialog-close>
+  <mat-icon>close</mat-icon>
+</button>
+<div mat-dialog-content>
+  <p>{{ message }}</p>
+</div>
+<div mat-dialog-actions align="center">
+  <button *ngIf="displayCancelButton" mat-button (click)="onDismiss()">{{ cancelAction }}</button>
+  <button mat-flat-button [color]="confirmColor" (click)="onConfirm()" cdkFocusInitial>{{ confirmAction }}</button>
+</div>

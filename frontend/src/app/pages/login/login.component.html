@@ -1,0 +1,36 @@
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-card appearance="outlined" class="mat-card-login">
+      <img src="/assets/img/logo.png" width="120" alt="" />
+      <mat-card-header>
+        <mat-card-title>
+          {{'Login.Title'| transloco}}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="form-row">
+          <div class="form-row-item-full mb-4">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'Login.Username'| transloco}}</mat-label>
+              <input matInput formControlName="username" autocomplete="username">
+            </mat-form-field>
+          </div>
+          <div class="form-row-item-full">
+            <mat-form-field appearance="outline">
+              <mat-label>{{'Login.Password'| transloco}}</mat-label>
+              <input matInput type="password" formControlName="password" autocomplete="current-password">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions class="login-actions">
+        <button
+          [disabled]="form.invalid || isLoading"
+          [class.spinner]="isLoading"
+          mat-flat-button
+          color="primary">{{'Login.Submit'| transloco}}</button>
+        <div class="text-center">
+          <a mat-button color="primary" [routerLink]="['/init_password']">{{ 'Login.ForgottenPassword' | transloco }}</a>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>

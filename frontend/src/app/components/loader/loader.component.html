@@ -1,0 +1,16 @@
+<div class="loader-wrapper" 
+  [class.page-loader]="pageLoading"
+  [class.button-loader]="!pageLoading"
+>
+  <mat-progress-spinner *ngIf="loading && pageLoading"
+                        [color]="color"
+                        [mode]="mode">
+  </mat-progress-spinner>
+
+  <mat-progress-spinner *ngIf="loading && !pageLoading"
+                        [class.inverted]="invert"
+                        [color]="color"
+                        [mode]="mode"
+                        [diameter]="size">
+  </mat-progress-spinner>
+</div>

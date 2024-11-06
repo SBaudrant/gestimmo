@@ -1,0 +1,9 @@
+.mdc-dialog {
+  &.mat-mdc-dialog-container {
+    .mat-dialog-close {
+      position: absolute;
+      right: 1.2rem;
+      top: 0.8rem;
+    }
+  }
+}

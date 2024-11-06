@@ -1,7 +1,7 @@
-<project name="gestimmo-frontend" default="zip">
+<project name="a5sys-app-starter-kit-frontend" default="zip">
   <target name="zip">
-    <zip destfile="gestimmo-frontend.zip">
-      <fileset dir="./dist/gestimmo-frontend">
+    <zip destfile="a5sys-app-starter-kit-frontend.zip">
+      <fileset dir="./dist/a5sys-app-starter-kit-frontend">
       </fileset>
     </zip>
   </target>

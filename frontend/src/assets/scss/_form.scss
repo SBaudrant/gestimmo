@@ -1,0 +1,28 @@
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-row-item {
+  flex: 1;
+  & + .form-row-item {
+    margin-left: 2.4rem;
+  }
+}
+
+.form-row-item-full {
+  flex: 0 0 100%;
+}
+
+.form-row-item,
+.form-row-item-full {
+  .mat-mdc-form-field {
+    width: 100%;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  transition: background-color 50000s ease-in-out 0s;
+}

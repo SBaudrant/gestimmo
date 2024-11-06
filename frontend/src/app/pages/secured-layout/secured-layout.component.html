@@ -1,0 +1,30 @@
+<mat-toolbar class="mat-typography">
+  <button (click)="isOpenMenu = !isOpenMenu" class="navbar-toggle" color="primary" mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img class="navbar-logo" src="/assets/img/logo.png" height="60" alt="" />
+  <nav [class.open]="isOpenMenu" class="navbar">
+    <a mat-button routerLinkActive="active" [routerLink]="['/home']">{{'Menu.Home'| transloco}}</a>
+    <a *ngIf="isAdmin$ | async" mat-button routerLinkActive="active" [routerLink]="['/users']">{{'Menu.Users'| transloco}}</a>
+  </nav>
+  <span class="spacer"></span>
+  <mat-menu #userMenu="matMenu">
+    <ng-template matMenuContent>
+      <p class="user" *ngIf="(currentUser$ | async) as currentUser">{{ currentUser.firstName }} {{ currentUser.lastName }}</p>
+      <button mat-menu-item type="button" [routerLink]="['/users', 'my-account']">
+        <mat-icon>person</mat-icon>
+        <span>{{ 'Menu.EditAccount' | transloco }}</span>
+      </button>
+      <button mat-menu-item type="button" (click)="logout()">
+        <mat-icon>power_settings_new</mat-icon>
+        <span>{{ 'Menu.Logout' | transloco }}</span>
+      </button>
+    </ng-template>
+  </mat-menu>
+
+  <button mat-icon-button [matMenuTriggerFor]="userMenu" *ngIf="(currentUser$ | async) as currentUser">
+    <mat-icon>person</mat-icon>
+  </button>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

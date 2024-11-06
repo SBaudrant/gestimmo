@@ -1,7 +1,6 @@
-version: '3.7'
-
 services:
-    react:
+    angular:
+        # image: ${GITLAB_REGISTRY}/a5sys/a5sys-app-starter-kit/frontend-angular/dev:latest
         build:
             context: ./docker/image/node/dev/
             dockerfile: ./Dockerfile
@@ -9,5 +8,6 @@ services:
         volumes:
             - .:/app/
         ports:
-            - "3000:3000"
-        entrypoint: ./docker/entrypoint/react.sh
+            - "4200:4200"
+            - "4201:4201"
+        entrypoint: ./docker/entrypoint/angular.sh

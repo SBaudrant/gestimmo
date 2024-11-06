@@ -1,0 +1,29 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 2.4rem 1.2rem;
+}
+
+.mat-mdc-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  max-width: 100%;
+  .mat-mdc-card-title {
+    margin-bottom: 2.4rem;
+  }
+  .mat-mdc-card-content {
+    width: 100%;
+  }
+  .mdc-card__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

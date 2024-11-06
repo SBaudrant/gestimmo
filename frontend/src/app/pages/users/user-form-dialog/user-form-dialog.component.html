@@ -1,0 +1,39 @@
+<form [formGroup]="form" (ngSubmit)="saveUser()">
+
+  <h1 mat-dialog-title>
+    {{ user.id ? ('Users.EditUser.Title' | transloco) : ('Users.NewUser.Title' | transloco)  }}
+  </h1>
+
+  <div mat-dialog-content>
+    <mat-checkbox formControlName="active" name="active" color="primary">{{ 'Users.Active' | transloco }}</mat-checkbox>
+    <mat-form-field appearance="outline">
+        <mat-label>{{'Users.FirstName' | transloco }}</mat-label>
+        <input matInput formControlName="firstName" name="firstName" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>{{'Users.LastName' | transloco }}</mat-label>
+        <input matInput formControlName="lastName" name="lastName" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>{{'Users.Email' | transloco }}</mat-label>
+        <input matInput formControlName="email" name="email" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>{{'Users.Role' | transloco }}</mat-label>
+      <mat-select formControlName="role" name="role" required>
+        <mat-option></mat-option>
+        <mat-option [value]="Role.ADMIN">{{ 'Users.ROLE_ADMIN' | transloco }}</mat-option>
+        <mat-option [value]="Role.USER">{{ 'Users.ROLE_USER' | transloco }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions align="end">
+    <button type="button" mat-button (click)="onDismiss()">{{ 'Action.Cancel' | transloco }}</button>
+    <button type="submit" [disabled]="isSaving || !form.valid" [class.spinner]="isSaving"
+      mat-flat-button
+      color="primary">
+      {{ 'Action.Save' | transloco }}
+    </button>
+  </div>
+</form>

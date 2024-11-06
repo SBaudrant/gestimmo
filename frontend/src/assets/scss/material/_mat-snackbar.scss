@@ -1,0 +1,34 @@
+.mdc-snackbar.mat-mdc-snack-bar-container {
+  &.snackbar-success .mdc-snackbar__surface {
+    background: var(--color-success);
+    .mdc-snackbar__label {
+      color: var(--color-white);
+    }
+    .mat-simple-snackbar-action,
+    .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) { color: var(--color-white); }
+  }
+  &.snackbar-danger .mdc-snackbar__surface {
+    background: var(--color-danger);
+    .mdc-snackbar__label {
+      color: var(--color-white);
+    }
+    .mat-simple-snackbar-action,
+    .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) { color: var(--color-white); }
+  }
+  &.snackbar-warning .mdc-snackbar__surface {
+    background: var(--color-warning);
+    .mdc-snackbar__label {
+      color: var(--color-white);
+    }
+    .mat-simple-snackbar-action,
+    .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) { color: var(--color-white); }
+  }
+  &.snackbar-info .mdc-snackbar__surface {
+    background: var(--color-info);
+    .mdc-snackbar__label {
+      color: var(--color-white);
+    }
+    .mat-simple-snackbar-action,
+    .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) { color: var(--color-white); }
+  }
+}

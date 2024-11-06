@@ -1,0 +1,13 @@
+.mat-mdc-fab {
+
+  &.mat-fab-mobile {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 15;
+    &.has-filter {
+      bottom: 72px;
+    }
+  }
+
+}

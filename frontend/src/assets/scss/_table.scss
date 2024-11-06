@@ -1,0 +1,19 @@
+@import './variables';
+
+.table-card {
+  border-radius: 8px;
+  background-color: var(--color-white);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.table-message {
+  padding: 1.6rem;
+}
+
+.table-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem;
+}

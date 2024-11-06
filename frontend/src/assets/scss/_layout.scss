@@ -1,0 +1,21 @@
+.page-container {
+  display: flex;
+  min-height: 100vh;
+  padding-top: $h-toolbar;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.6rem;
+  h1 {
+    margin-bottom: 0;
+  }
+}
+
+.page-content {
+  margin: 2.4rem 0;
+  padding: 0 1.6rem;
+  flex: 1 1 100%;
+}

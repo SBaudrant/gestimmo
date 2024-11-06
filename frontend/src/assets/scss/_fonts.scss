@@ -1,0 +1,10 @@
+/***
+  All Fonts Loaded
+***/
+@import '@angular/material/theming';
+
+// Add fonts files in a folder assets/fonts
+// @include font-face('Font_Name', 'Font_Weight', 'Font_File_Name');
+
+$my-custom-typography: mat-typography-config( $font-family: 'Roboto');
+@include angular-material-typography($my-custom-typography);

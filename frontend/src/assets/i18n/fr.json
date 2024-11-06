@@ -1,0 +1,107 @@
+{
+  "Action": {
+    "Back": "Retour",
+    "Cancel": "Annuler",
+    "Confirm": "Confirmation",
+    "Delete": "Supprimer",
+    "Edit": "Éditer",
+    "Ok": "Ok",
+    "Reinit": "Réinitialiser",
+    "Save": "Enregistrer",
+    "Search": "Rechercher",
+    "ShowFilters": "Rechercher",
+    "Yes": "Oui"
+  },
+  "Error": {
+    "Default": "Une erreur s'est produite. Veuillez réessayer un peu plus tard."
+  },
+  "InitPassword": {
+    "BadRequest": "Impossible d'initialiser le mot de passe. Veuillez redemander une initialisation de votre mot de passe.",
+    "Init": "Initialiser",
+    "NewPasswordTooShort": "Le mot de passe doit faire au moins 8 caractères",
+    "NewPasswordTooWeak": "Le mot de passe doit contenir au moins 3 des éléments suivants : minuscules, majuscules, chiffres et caractères spéciaux",
+    "NotSame": "Les mots de passe entrés ne correspondent pas",
+    "Password": "Mot de passe",
+    "PasswordConfirmation": "Confirmation du mot de passe",
+    "PasswordInit": "Votre mot de passe a bien été initialisé",
+    "Title": "Initialisation du mot de passe"
+  },
+  "Login": {
+    "Credentials": {
+      "Error": "Les informations de connexion sont incorrectes"
+    },
+    "ForgottenPassword": "Mot de passe oublié",
+    "Password": "Mot de passe",
+    "Submit": "Se connecter",
+    "Title": "A5sys App Starter Kit",
+    "Username": "Identifiant"
+  },
+  "Menu": {
+    "EditAccount": "Modifier mon compte",
+    "Home": "Accueil",
+    "Logout": "Se déconnecter",
+    "Users": "Utilisateurs"
+  },
+  "Paginator": {
+    "FirstPage": "Première page",
+    "ItemsPerPage": "Élements par page",
+    "LastPage": "Dernière page",
+    "NextPage": "Page suivante",
+    "PreviousPage": "Page précédente",
+    "Range": "{{from}}-{{to}} sur {{length}}"
+  },
+  "RequestPasswordInit": {
+    "Email": "Email",
+    "RequestSend": "La demande d'initialisation de mot de passe a bien été envoyée",
+    "Send": "Envoyer",
+    "Title": "Demande d'initialisation du mot de passe"
+  },
+  "UserAccount": {
+    "Email": "Email",
+    "EmailRequired": "L'email est obligatoire",
+    "FirstName": "Prénom",
+    "FirstNameRequired": "Le prénom est obligatoire",
+    "LastName": "Nom",
+    "LastNameRequired": "Le nom est obligatoire",
+    "NewPassword": "Nouveau mot de passe",
+    "NewPasswordConfirmation": "Confirmation du nouveau mot de passe",
+    "NewPasswordTooShort": "Le mot de passe doit faire au moins 8 caractères",
+    "NewPasswordTooWeak": "Le mot de passe doit contenir au moins 3 des éléments suivants : minuscules, majuscules, chiffres et caractères spéciaux",
+    "NotSame": "Les mots de passe entrés ne correspondent pas",
+    "OldPassword": "Ancien mot de passe",
+    "Reset": "Réinitialiser",
+    "Submit": "Sauvegarder",
+    "Title": "Modifier mon compte",
+    "Updated": "Votre compte a bien été mis à jour",
+    "WrongOldPassword": "L'ancien mot de passe ne correspond pas"
+  },
+  "Users": {
+    "Actions": "Actions",
+    "Active": "Actif",
+    "Add": "Créer un utilisateur",
+    "AllRoles": "Tous",
+    "ConfirmDelete": "Supprimer l'utilisateur {{ userFullName }} ?",
+    "CreateError": "Une erreur est survenue lors de la création de l'utilisateur.",
+    "CreateSuccess": "L'utilisateur a été créé.",
+    "DeleteError": "Une erreur est survenue lors de la suppression de l'utilisateur.",
+    "DeleteSuccess": "L'utilisateur a été supprimé.",
+    "EditError": "Une erreur est survenue lors de la modification de l'utilisateur.",
+    "EditSuccess": "L'utilisateur a été modifié.",
+    "EditUser": {
+      "Title": "Nouvel utilisateur"
+    },
+    "Email": "Email",
+    "EmptyList": "Aucun résultat",
+    "FirstName": "Prénom",
+    "LastName": "Nom",
+    "NewUser": {
+      "Title": "Modification de l'utilisateur"
+    },
+    "ROLE_ADMIN": "Administrateur",
+    "ROLE_USER": "Utilisateur",
+    "Role": "Profil",
+    "Search": "Recherche",
+    "SearchPlaceholder": "Nom, prénom ou email",
+    "Title": "Liste des utilisateurs"
+  }
+}

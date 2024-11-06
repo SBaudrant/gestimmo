@@ -1,8 +1,10 @@
-FROM node:20-alpine
+FROM node:22-alpine
 
 RUN mkdir -p /app
 WORKDIR /app
 
-RUN apk add git
+RUN npm install npm@latest -g
+RUN npm i -g @angular/cli \
+    && chmod -R 777 /root/
 
-EXPOSE 3000
+EXPOSE 4200 4200

@@ -1,0 +1,16 @@
+.mat-mdc-button-base {
+  &.mat-mdc-button,
+  &.mat-mdc-unelevated-button,
+  &.mat-mdc-raised-button,
+  &.mat-mdc-outlined-button {
+
+    //ICON
+    > .mat-icon {
+      font-size: 2rem;
+      height: 2rem;
+      width: 2rem;
+    }
+
+  }
+}
+

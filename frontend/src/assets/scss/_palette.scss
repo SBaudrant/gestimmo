@@ -1,0 +1,35 @@
+
+// Example of palette for theming app
+//http://mcg.mbitson.com/
+$palette-primary: (
+  50: #fbe1e6,
+  100: #f4b4bf,
+  200: #ed8295,
+  300: #e6506b,
+  400: #e02b4b,
+  500: #db052b,
+  600: #d70426,
+  700: #d20420,
+  800: #cd031a,
+  900: #c40110,
+  A100: #ffeced,
+  A200: #ffb9bc,
+  A400: #ff868b,
+  A700: #ff6d72,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);

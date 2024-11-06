@@ -1,0 +1,122 @@
+@include breakpointMax(md) {
+
+  //Default responsive table
+  .mat-mdc-table {
+    border: 0;
+    vertical-align: middle;
+    .mat-mdc-header-row {
+      display: none;
+    }
+    .mat-mdc-row {
+      border-bottom: 2px solid var(--color-primary);
+      display: block;
+    }
+    .mat-mdc-cell {
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      text-align: right;
+      position: relative;
+      padding: 0 24px;
+      &:before {
+        content: attr(data-label);
+        font-weight: normal;
+        font-weight: bold;
+      }
+      &:last-child {
+        border-bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  //Accordion Responsive table
+  .table__responsive {
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+    .mat-mdc-table {
+      border: 0;
+      vertical-align: middle;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      background: transparent;
+      box-shadow: none;
+      .mat-mdc-header-row {
+        display: none;
+      }
+      .mat-mdc-row {
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        min-height: auto;
+        background: var(--color-white);
+        box-shadow: $box-shadow-table;
+        transition: all 0.5s ease-in-out;
+        max-height: 4.8rem;
+        border: none;
+        &:hover {
+          background: var(--color-white);
+        }
+        &:has(.mat-mdc-cell:first-child.is-open) {
+          max-height: 20rem;
+        }
+        .mat-mdc-cell {
+          display: flex;
+          position: relative;
+          padding: 0 1.6rem;
+          height: 4.8rem;
+          flex: 0 0 100%;
+          width: 100%;
+          border: none;
+          &:before {
+            content: attr(data-label);
+            font-weight: normal;
+            font-weight: bold;
+            position: absolute;
+            top: 0;
+            left: 1.6rem;
+            font-size: 1rem;
+            font-weight: 300;
+            opacity: 0.3;
+          }
+          &:not(:first-child) {
+            flex: 0 0 50%;
+            padding-top: 0.8rem;
+          }
+          &:first-child {
+            font-weight: bold;
+            padding-left: 0;
+            justify-content: flex-start;
+            .mdc-icon-button {
+              transition: transform 0.5s ease-in-out;
+              &:first-child {
+                pointer-events: none;
+              }
+            }
+            &:before {
+              display: none;
+            }
+            &.is-open {
+              color: var(--color-primary);
+              .mdc-icon-button:first-child {
+                transform: rotate(-180deg);
+                color: var(--color-primary);
+              }
+            }
+          }
+          &.mat-column-actions {
+            flex: 0 0 100%;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+
+}

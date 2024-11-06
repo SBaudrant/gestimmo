@@ -1,0 +1,43 @@
+.mat-mdc-card {
+  .mat-mdc-card-header {
+    display: flex;
+    padding: 2.4rem 2.4rem 0;
+  }
+  .mat-mdc-card-content {
+    padding: 2.4rem;
+  }
+  .mdc-card__actions {
+    justify-content: center;
+    gap: 2.4rem;
+    min-height: 6.4rem;
+  }
+
+  &.mat-card-page {
+    min-height: calc(100vh - calc(2.4rem + $h-toolbar + 2.4rem));
+    .mat-mdc-card-content {
+      flex: 1;
+    }
+    &.mat-mdc-card-outlined {
+      @include breakpointMax(sm) {
+        border: none;
+        padding: 0;
+        .mat-mdc-card-header {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+
+  &.mat-card-login {
+    &.mat-mdc-card-outlined {
+      @include breakpointMax(sm) {
+        border: none;
+        padding: 0;
+        .mat-mdc-card-header {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+
+}

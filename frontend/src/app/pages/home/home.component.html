@@ -1,0 +1,112 @@
+<div class="container">
+  <h1>Bienvenue sur A5sys App Starter Kit !</h1>
+  <p class="mat-body-strong">Cette application sert de référence pour la création de nouveaux projets</p>
+  <p class="mat-body">Pour plus d'informations, allez voir le readme du projet : <a>https://gitlab.a5sys.com/a5sys/a5sys-app-starter-kit</a></p>
+
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Snackbar</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="d-flex justify-content-center gap-12">
+          <button mat-flat-button color='primary' (click)="openSnackBarSuccess()">Success</button>
+          <button mat-flat-button color='primary' (click)="openSnackBarInfo()">Info</button>
+          <button mat-flat-button color='primary' (click)="openSnackBarWarning()">Warning</button>
+          <button mat-flat-button color='primary' (click)="openSnackBarDanger()">Error</button>
+        </mat-card-content>
+      </mat-card>
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Confirm Dialog</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <!-- Add [class.spinner]="true" => to display the spinner -->
+          <button mat-flat-button (click)="openDialog()" color='primary'>Dialog</button>
+        </mat-card-content>
+      </mat-card>
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Button loading</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <!-- Add [class.spinner]="true" => to display the spinner -->
+          <button mat-flat-button class="spinner" color='primary'>Success</button>
+        </mat-card-content>
+      </mat-card>
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Fields</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="d-flex gap-16 justify-content-center">
+            <mat-form-field appearance="outline">
+              <mat-label>Outlined</mat-label>
+              <input matInput type="text"  autocomplete="">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Fill</mat-label>
+              <input matInput type="text" autocomplete="">
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-6 col-xs-12">
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Upload file</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Incoming</p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Loader</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-loader [loading]="true"></app-loader>
+        </mat-card-content>
+      </mat-card>
+      <mat-card appearance="outlined">
+        <mat-card-header>
+          <mat-card-title>Mat icon</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <blockquote class="mb-4">
+            <p>In index.html file, add : </p>
+            <code>
+              &lt;link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet"&gt;
+            </code>
+          </blockquote>
+          <div class="d-flex justify-content-between">
+            <p class="text-bold">Filled :</p>
+            <code class="text-italic">no class</code>
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p class="text-bold">Outlined :</p>
+            <code class="text-italic">class="material-icons-outlined"</code>
+            <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p class="text-bold">Round :</p>
+            <code class="text-italic">class="material-icons-round"</code>
+            <mat-icon class="material-icons-round" aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p class="text-bold">Sharp :</p>
+            <code class="text-italic">class="material-icons-sharp"</code>
+            <mat-icon class="material-icons-sharp" aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p class="text-bold">Two tone :</p>
+            <code class="text-italic">class="material-icons-two-tone"</code>
+            <mat-icon class="material-icons-two-tone" aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

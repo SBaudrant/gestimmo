@@ -1,0 +1,72 @@
+@use './variables' as *;
+
+// Font face
+@mixin font-face($name, $weight, $file) {
+  @font-face {
+    font-family: "#{$name}";
+    src: url('../fonts/#{$file}.woff2') format('woff2'),
+      url('../fonts/#{$file}.woff') format('woff');
+    font-weight: #{$weight};
+    font-style: normal;
+    font-display: swap;
+  }
+}
+
+
+// Try @media (width > 980px) new syntax
+// Breakpoint (not mobile first)
+@mixin breakpointMax($point) {
+  @if $point == xl {
+    @media screen and (max-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+  @else if $point == l {
+    @media screen and (max-width: $breakpoint-l) {
+      @content;
+    }
+  }
+  @else if $point == md {
+    @media screen and (max-width: $breakpoint-md) {
+      @content;
+    }
+  }
+  @else if $point == sm {
+    @media screen and (max-width: $breakpoint-sm) {
+      @content;
+    }
+  }
+  @else if $point == xs {
+    @media screen and (max-width: $breakpoint-xs) {
+      @content;
+    }
+  }
+}
+// Mobile first
+@mixin breakpointMin($point) {
+  @if $point == xl {
+    @media screen and (min-width: calc($breakpoint-xl + 1px)) {
+      @content;
+    }
+  }
+  @else if $point == l {
+    @media screen and (min-width: calc($breakpoint-l + 1px)) {
+      @content;
+    }
+  }
+  @else if $point == md {
+    @media screen and (min-width: calc($breakpoint-md + 1px)) {
+      @content;
+    }
+  }
+  @else if $point == sm {
+    @media screen and (min-width: calc($breakpoint-sm + 1px)) {
+      @content;
+    }
+  }
+  @else if $point == xs {
+    @media screen and (min-width: calc($breakpoint-xs + 1px)) {
+      @content;
+    }
+  }
+}
