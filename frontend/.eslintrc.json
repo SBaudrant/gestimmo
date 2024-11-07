@@ -15,6 +15,7 @@
       ],
       "parserOptions": {
         "project": "tsconfig.json",
+        "tsconfigRootDir": "./frontend",
         "sourceType": "module",
         "createDefaultProgram": true
       },

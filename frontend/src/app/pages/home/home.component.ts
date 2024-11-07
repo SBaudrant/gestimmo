@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { NotificationService } from '../../services/notification.service';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '@components/confirm-dialog/confirm-dialog.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { LoaderComponent } from '../../components/loader/loader.component';
+import { LoaderComponent } from '@components/loader/loader.component';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({

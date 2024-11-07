@@ -3,7 +3,7 @@ import {
   HttpHandler, HttpEvent, HttpInterceptor, HttpRequest, HttpResponse,
 } from '@angular/common/http';
 import { CookieService } from '../services/cookie.service';
-import { CookieNameEnum } from '../models/enum/cookie-name.enum';
+import { CookieNameEnum } from '@enum/cookie-name.enum';
 
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';

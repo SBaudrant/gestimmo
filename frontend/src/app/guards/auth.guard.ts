@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
-import { REDIRECT_URL_PARAMETER } from '../models/const/redirect-url-parameter.const';
+import { REDIRECT_URL_PARAMETER } from '@models/const/redirect-url-parameter.const';
 import { CookieService } from '../services/cookie.service';
 
 @Injectable({

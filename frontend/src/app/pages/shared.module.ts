@@ -31,8 +31,8 @@ import { fr } from 'date-fns/locale';
 import { marker as _ } from '@ngneat/transloco-keys-manager/marker';
 
 // Our components
-import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
-import { LoaderComponent } from '../components/loader/loader.component';
+import { ConfirmDialogComponent } from '@components/confirm-dialog/confirm-dialog.component';
+import { LoaderComponent } from '@components/loader/loader.component';
 
 // Our services
 import { environment } from '../../environments/environment';

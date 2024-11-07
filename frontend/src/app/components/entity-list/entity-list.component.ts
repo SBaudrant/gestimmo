@@ -3,9 +3,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { Entity } from '../../models/entity/entity.class';
-import { AbstractFilters } from '../../models/filter/abstract-filters.class';
-import { ListOrder } from '../../models/paginator/list-order.interface';
+import { Entity } from '@entity/entity.class';
+import { AbstractFilters } from '@filter/abstract-filters.class';
+import { ListOrder } from '@models/paginator/list-order.interface';
 import { ObservableInput, merge } from 'rxjs';
 import { EntityDataSource } from './entity-data-source.service';
 

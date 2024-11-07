@@ -5,10 +5,10 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 // Our interceptors
-import { AuthorizationInterceptor } from '../interceptors/authorization.interceptor';
-import { ExtendCookieLifetimeInterceptor } from '../interceptors/extend-cookie-lifetime.interceptor';
-import { UnauthorizedInterceptor } from '../interceptors/unauthorized.interceptor';
-import { InternalServerErrorInterceptor } from '../interceptors/internal-server-error.interceptor';
+import { AuthorizationInterceptor } from '@interceptors/authorization.interceptor';
+import { ExtendCookieLifetimeInterceptor } from '@interceptors/extend-cookie-lifetime.interceptor';
+import { UnauthorizedInterceptor } from '@interceptors/unauthorized.interceptor';
+import { InternalServerErrorInterceptor } from '@interceptors/internal-server-error.interceptor';
 
 // Out components
 import { LoginComponent } from './login/login.component';

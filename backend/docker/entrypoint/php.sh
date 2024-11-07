@@ -27,6 +27,6 @@ composer install
 ./bin/console doctrine:database:drop --if-exists --force
 ./bin/console doctrine:database:create
 ./bin/console doctrine:schema:update --force --no-interaction --complete
-./bin/console hautelook:fixtures:load --no-interaction
+./bin/console doctrine:fixtures:load -n
 
 exec php-fpm -F

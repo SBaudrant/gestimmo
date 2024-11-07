@@ -41,3 +41,11 @@ services:
         # command:
         #     - "--http-ip=0.0.0.0"
         #     - "--smtp-ip=0.0.0.0"
+    
+    adminer:
+        image: adminer
+        restart: always
+        depends_on: 
+            - postgres
+        ports:
+            - 8080:80

@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Observable, of, Subject, Subscription } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
-import { Entity } from '../../models/entity/entity.class';
-import { AbstractFilters } from '../../models/filter/abstract-filters.class';
-import { ListOrder } from '../../models/paginator/list-order.interface';
+import { Entity } from '@entity/entity.class';
+import { AbstractFilters } from '@filter/abstract-filters.class';
+import { ListOrder } from '@models/paginator/list-order.interface';
 import { HttpService } from '../../services/http.service';
-import { PaginatedResult } from '../../models/paginator/paginated-result.class';
+import { PaginatedResult } from '@models/paginator/paginated-result.class';
 
 interface Paginator {
   pageIndex: number;

@@ -1,17 +1,17 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpContext } from '@angular/common/http';
-import { CookieNameEnum } from '../models/enum/cookie-name.enum';
+import { CookieNameEnum } from '@enum/cookie-name.enum';
 import { Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { catchError, mergeMap, take, tap } from 'rxjs/operators';
 import { ParametersService } from '../services/parameters.service';
-import { STORAGE } from '../injection/storage.injection';
-import { REDIRECT_URL_PARAMETER } from '../models/const/redirect-url-parameter.const';
-import { User } from '../models/entity/user.class';
+import { STORAGE } from '@injection/storage.injection';
+import { REDIRECT_URL_PARAMETER } from '@models/const/redirect-url-parameter.const';
+import { User } from '@entity/user.class';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { CookieService } from '../services/cookie.service';
-import { JwtPayload } from '../models/interface/jwt-payload.interface';
-import { DISABLE_UNAVAILABLE_INTERCEPTOR } from '../interceptors/unauthorized.interceptor';
+import { JwtPayload } from '@interface/jwt-payload.interface';
+import { DISABLE_UNAVAILABLE_INTERCEPTOR } from '@interceptors/unauthorized.interceptor';
 
 @Injectable({
   providedIn: 'root',

@@ -25,15 +25,46 @@
       "*": [
         "node_modules"
       ],
-      "@shared/*": [
-        "src/app/shared/*"
+      "@entity/*": [
+        "src/app/models/entity/*"
+      ],
+      "@enum/*": [
+        "src/app/models/enum/*"
+      ],
+      "@filters/*": [
+        "src/app/models/filters/*"
+      ],
+      "@interface/*": [
+        "src/app/models/interface/*"
+      ],
+      "@components/*": [
+        "src/app/components/*"
+      ],
+      "@function/*": [
+        "src/app/function/*"
+      ],
+      "@guards/*": [
+        "src/app/guards/*"
+      ],
+      "@injection/*": [
+        "src/app/injection/*"
+      ],
+      "@interceptors/*": [
+        "src/app/interceptors/*"
+      ],
+      "@models/*": [
+        "src/app/models/*"
+      ],
+      "@pages/*": [
+        "src/app/pages/*"
       ],
       "@services/*": [
         "src/app/services/*"
       ],
-      "@entity/*": [
-        "src/app/models/entity/*"
-      ]
+      "@validators/*": [
+        "src/app/validators/*"
+      ],
+      
     }
   },
   "angularCompilerOptions": {

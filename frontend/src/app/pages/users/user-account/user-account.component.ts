@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { forkJoin, Observable, of } from 'rxjs';
 import { catchError, finalize, tap } from 'rxjs/operators';
 import { tooWeakValidator } from '../../../validators/too-weak-validator';
-import { User } from '../../../models/entity/user.class';
+import { User } from '@entity/user.class';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { UserService } from '../../../services/user.service';
 import { NotificationService } from '../../../services/notification.service';

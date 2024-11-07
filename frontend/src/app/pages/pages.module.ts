@@ -12,10 +12,10 @@ import { UsersModule } from './users/users.module';
 import { RouterModule } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ExtendCookieLifetimeInterceptor } from '../interceptors/extend-cookie-lifetime.interceptor';
-import { AuthorizationInterceptor } from '../interceptors/authorization.interceptor';
-import { UnauthorizedInterceptor } from '../interceptors/unauthorized.interceptor';
-import { InternalServerErrorInterceptor } from '../interceptors/internal-server-error.interceptor';
+import { ExtendCookieLifetimeInterceptor } from '@interceptors/extend-cookie-lifetime.interceptor';
+import { AuthorizationInterceptor } from '@interceptors/authorization.interceptor';
+import { UnauthorizedInterceptor } from '@interceptors/unauthorized.interceptor';
+import { InternalServerErrorInterceptor } from '@interceptors/internal-server-error.interceptor';
 
 @NgModule({
   declarations: [

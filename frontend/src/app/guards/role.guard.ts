@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import { map } from 'rxjs/operators';
 import { AuthenticationService } from '../services/authentication.service';
-import { Role } from '../models/enum/role.enum';
+import { Role } from '@enum/role.enum';
 
 @Injectable({
   providedIn: 'root',

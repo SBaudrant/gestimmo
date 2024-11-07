@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CookieNameEnum } from '../models/enum/cookie-name.enum';
-import { JwtPayload } from '../models/interface/jwt-payload.interface';
+import { CookieNameEnum } from '@enum/cookie-name.enum';
+import { JwtPayload } from '@interface/jwt-payload.interface';
 
 @Injectable({
   providedIn: 'root',

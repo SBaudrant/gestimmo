@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { HttpService } from './http.service';
-import { Role } from '../models/enum/role.enum';
-import { UserFilters } from '../models/filter/user-filters.class';
-import { User } from '../models/entity/user.class';
-import { Clazz } from '../models/type/clazz.type';
+import { Role } from '@enum/role.enum';
+import { UserFilters } from '@filter/user-filters.class';
+import { User } from '@entity/user.class';
+import { Clazz } from '@models/type/clazz.type';
 
 @Injectable({
   providedIn: 'root',

@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs';
-import { LoadingProgress } from '../models/interface/loading-progress.interface';
+import { LoadingProgress } from '@interface/loading-progress.interface';
 import { tap } from 'rxjs/operators';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 

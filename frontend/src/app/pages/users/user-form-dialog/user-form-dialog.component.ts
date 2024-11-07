@@ -4,8 +4,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { NotificationService } from '../../../services/notification.service';
 import { UserService } from '../../../services/user.service';
-import { User } from '../../../models/entity/user.class';
-import { Role } from '../../../models/enum/role.enum';
+import { User } from '@entity/user.class';
+import { Role } from '@enum/role.enum';
 import { marker as _ } from '@ngneat/transloco-keys-manager/marker';
 
 @Component({

@@ -1,5 +1,5 @@
-import { Entity } from '../models/entity/entity.class';
-import { ElementOrArrayType } from '../models/type/element-or-array.type';
+import { Entity } from '@entity/entity.class';
+import { ElementOrArrayType } from '@models/type/element-or-array.type';
 
 function getEntityIri(e: Entity): string | undefined {
   return e ? e['@id'] : undefined;
