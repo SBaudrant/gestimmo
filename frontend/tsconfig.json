@@ -31,8 +31,8 @@
       "@enum/*": [
         "src/app/models/enum/*"
       ],
-      "@filters/*": [
-        "src/app/models/filters/*"
+      "@filter/*": [
+        "src/app/models/filter/*"
       ],
       "@interface/*": [
         "src/app/models/interface/*"
