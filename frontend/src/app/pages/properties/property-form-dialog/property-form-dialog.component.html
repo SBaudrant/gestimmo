@@ -1,0 +1,39 @@
+<form [formGroup]="form" (ngSubmit)="saveProperty()">
+
+  <h1 mat-dialog-title>
+    {{ property.id ? ('Properties.EditProperty.Title' | transloco) : ('Properties.NewProperty.Title' | transloco)  }}
+  </h1>
+
+  <div mat-dialog-content>
+    <mat-checkbox formControlName="active" name="active" color="primary">{{ 'Properties.Active' | transloco }}</mat-checkbox>
+    <mat-form-field appearance="outline">
+        <mat-label>{{'Properties.FirstName' | transloco }}</mat-label>
+        <input matInput formControlName="firstName" name="firstName" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>{{'Properties.LastName' | transloco }}</mat-label>
+        <input matInput formControlName="lastName" name="lastName" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>{{'Properties.Email' | transloco }}</mat-label>
+        <input matInput formControlName="email" name="email" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>{{'Properties.Role' | transloco }}</mat-label>
+      <mat-select formControlName="role" name="role" required>
+        <mat-option></mat-option>
+        <mat-option [value]="Role.ADMIN">{{ 'Properties.ROLE_ADMIN' | transloco }}</mat-option>
+        <mat-option [value]="Role.USER">{{ 'Properties.ROLE_USER' | transloco }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions align="end">
+    <button type="button" mat-button (click)="onDismiss()">{{ 'Action.Cancel' | transloco }}</button>
+    <button type="submit" [disabled]="isSaving || !form.valid" [class.spinner]="isSaving"
+      mat-flat-button
+      color="primary">
+      {{ 'Action.Save' | transloco }}
+    </button>
+  </div>
+</form>

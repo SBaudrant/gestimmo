@@ -1,0 +1,106 @@
+<div class="page-container">
+  <div [class.open]="showFilters" class="sidebar">
+    <form class="sidebar-container" [formGroup]="form" (ngSubmit)="search()" *ngIf="form">
+      <h2>{{'Properties.Search' | transloco}}</h2>
+      <div class="sidebar-content">
+        <div class="form-row">
+          <div class="form-row-item-full">
+            <mat-form-field appearance="outline">
+              <mat-label>{{ 'Properties.SearchPlaceholder' | transloco}}</mat-label>
+              <input matInput formControlName="search">
+            </mat-form-field>
+          </div>
+          <div class="form-row-item-full">
+            <mat-form-field appearance="outline">
+              <mat-label>{{ 'Properties.Role' | transloco}}</mat-label>
+              <mat-select formControlName="role">
+                <mat-option>{{ 'Properties.AllRoles' | transloco}}</mat-option>
+                <mat-option *ngFor="let role of roles" [value]="role">{{ 'Properties.'+role | transloco}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar-actions">
+        <button [disabled]="dataSource.loading$ | async" [class.spinner]="dataSource.loading$ | async" type="submit" mat-flat-button color="primary">
+          <mat-icon>search</mat-icon> {{'Action.Search' | transloco}}
+        </button>
+        <button [disabled]="dataSource.loading$ | async" type="button" mat-stroked-button color="primary" (click)="reset()">
+          <mat-icon>replay</mat-icon> {{'Action.Reinit' | transloco}}
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="page-content">
+
+    <div class="page-header">
+      <h1>{{'Properties.Title' | transloco}}</h1>
+      <button class="d-none d-md-block" (click)="openAddDialog()" mat-flat-button color="primary">
+        <mat-icon>add</mat-icon> {{'Properties.Add' | transloco}}
+      </button>
+      <button class="d-block d-md-none mat-fab-mobile has-filter" (click)="openAddDialog()" mat-fab color="primary">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="table-card table__responsive">
+      <mat-table matSort matSortDisableClear [dataSource]="dataSource" [matSortActive]="sortConfig.property" [matSortDirection]="sortConfig.direction" class="properties-table">
+        <ng-container matColumnDef="firstName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Properties.FirstName' | transloco}} </mat-header-cell>
+          <mat-cell
+            [attr.data-label]="'Properties.FirstName' | transloco"
+            *matCellDef="let property"
+            (click)="toggleClass($event, 'is-open')"
+          >
+          <button mat-icon-button class="d-lg-none">
+            <mat-icon>expand_more</mat-icon>
+          </button>
+          {{property.firstName}}
+        </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="lastName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Properties.LastName' | transloco}} </mat-header-cell>
+          <mat-cell [attr.data-label]="'Properties.LastName' | transloco" *matCellDef="let property"> {{property.lastName}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Properties.Email' | transloco}} </mat-header-cell>
+          <mat-cell [attr.data-label]="'Properties.Email' | transloco" *matCellDef="let property"> {{property.email}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="role">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Properties.Role' | transloco}} </mat-header-cell>
+          <mat-cell [attr.data-label]="'Properties.Role' | transloco" *matCellDef="let property"> {{ ('Properties.' + property.role) | transloco }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="active">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Properties.Active' | transloco}} </mat-header-cell>
+          <mat-cell [attr.data-label]="'Properties.Active' | transloco" *matCellDef="let property"> <mat-icon>{{property.active ? 'check_box' : 'check_box_outline_blank'}}</mat-icon> </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef> {{'Properties.Actions' | transloco}} </mat-header-cell>
+          <mat-cell *matCellDef="let property">
+            <button [disabled]="isSaving" mat-icon-button color="primary" (click)="openEditDialog(property)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button [disabled]="isSaving" mat-icon-button color="warn" (click)="deleteProperty(property)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
+      <div *ngIf="dataSource.loading$ | async" class="table-loader">
+        <app-loader [loading]="true"></app-loader>
+      </div>
+      <div *ngIf="(dataSource.loading$ | async) === false && paginator?.length === 0" class="table-message">
+        {{ 'Properties.EmptyList' | transloco }}
+      </div>
+      <mat-paginator [pageSize]="PAGE_SIZE"></mat-paginator>
+    </div>
+
+  </div>
+  <button class="sidebar-toggle d-block d-lg-none" mat-raised-button (click)="showFilters = !showFilters">
+    {{'Action.ShowFilters' | transloco}}
+  </button>
+</div>

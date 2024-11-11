@@ -1,0 +1,79 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row justify-content-center">
+      <mat-card appearance="outlined" class="col-md-8 mat-card-page">
+        <mat-card-header>
+          <mat-card-title>{{ 'PropertyAccount.Title' | transloco }}</mat-card-title>
+        </mat-card-header>
+
+          <mat-card-content>
+            <mat-form-field appearance="outline">
+              <mat-label>{{ 'PropertyAccount.Email' | transloco }}</mat-label>
+              <input matInput formControlName="email" type="email" autocomplete="propertyname">
+              <mat-error>{{ 'PropertyAccount.EmailRequired' | transloco }}</mat-error>
+            </mat-form-field>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ 'PropertyAccount.FirstName' | transloco }}</mat-label>
+                  <input matInput formControlName="firstName">
+                  <mat-error>{{ 'PropertyAccount.FirstNameRequired' | transloco }}</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ 'PropertyAccount.LastName' | transloco }}</mat-label>
+                  <input matInput formControlName="lastName">
+                  <mat-error>{{ 'PropertyAccount.LastNameRequired' | transloco }}</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <hr>
+
+            <ng-container formGroupName="password">
+              <mat-form-field appearance="outline">
+                <mat-label>{{ 'PropertyAccount.OldPassword' | transloco }}</mat-label>
+                <input matInput type="password" formControlName="oldPassword" autocomplete="current-password">
+              </mat-form-field>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>{{ 'PropertyAccount.NewPassword' | transloco }}</mat-label>
+                    <input matInput type="password" formControlName="newPassword" autocomplete="new-password">
+                    <mat-error *ngIf="form.get('password.newPassword')?.errors?.tooWeak">{{ 'PropertyAccount.NewPasswordTooWeak' | transloco }}</mat-error>
+                    <mat-error *ngIf="form.get('password.newPassword')?.errors?.minlength">{{ 'PropertyAccount.NewPasswordTooShort' | transloco }}</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field appearance="outline">
+                    <mat-label>{{ 'PropertyAccount.NewPasswordConfirmation' | transloco }}</mat-label>
+                    <input matInput type="password" formControlName="newPasswordConfirmation" autocomplete="new-password">
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+            <mat-error
+              *ngIf="!form.get('password.newPasswordConfirmation')?.pristine && form.get('password')?.errors?.notSame"
+            >{{ 'PropertyAccount.NotSame' | transloco }}</mat-error>
+            <mat-error
+              *ngIf="form.get('password')?.errors?.wrongOldPassword"
+            >{{ 'PropertyAccount.WrongOldPassword' | transloco }}</mat-error>
+          </mat-card-content>
+          <mat-card-actions>
+            <button
+              type="reset"
+              [disabled]="isLoading"
+              mat-flat-button
+            >{{ 'PropertyAccount.Reset' | transloco }}</button>
+            <button
+              [disabled]="form.invalid || isLoading"
+              [class.spinner]="isLoading"
+              mat-flat-button
+              color="primary"
+            >{{ 'PropertyAccount.Submit' | transloco }}</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </form>
+  </div>

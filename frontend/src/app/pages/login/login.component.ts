@@ -7,8 +7,6 @@ import { AuthenticationService } from '@services/authentication.service';
 import { NotificationService } from '@services/notification.service';
 import { finalize } from 'rxjs/operators';
 import { marker as _ } from '@ngneat/transloco-keys-manager/marker';
-import { PagesModule } from '@pages.module';
-import { SharedModule } from '../shared.module';
 
 @Component({
   selector: 'app-login',

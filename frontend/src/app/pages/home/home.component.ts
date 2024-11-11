@@ -40,7 +40,7 @@ export class HomeComponent {
     this.dialog
       .open(ConfirmDialogComponent, {
         data: {
-          title: 'Dialotig title',
+          title: 'Dialog title',
           message: 'Dialog content message',
           confirmAction: 'Oui',
           cancelAction: 'Non',

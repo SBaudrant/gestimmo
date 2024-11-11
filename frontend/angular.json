@@ -108,14 +108,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "a5sys-app-starter-kit-frontend:build"
+            "buildTarget": "a5sys-app-starter-kit-frontend:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "a5sys-app-starter-kit-frontend:build:production"
+              "buildTarget": "a5sys-app-starter-kit-frontend:build:production"
             },
             "development": {
-              "browserTarget": "a5sys-app-starter-kit-frontend:build:development"
+              "buildTarget": "a5sys-app-starter-kit-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -123,7 +123,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "a5sys-app-starter-kit-frontend:build"
+            "buildTarget": "a5sys-app-starter-kit-frontend:build"
           }
         },
         "lint": {
