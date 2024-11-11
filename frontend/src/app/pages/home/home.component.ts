@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NotificationService } from '../../services/notification.service';
+import { NotificationService } from '@services/notification.service';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '@components/confirm-dialog/confirm-dialog.component';

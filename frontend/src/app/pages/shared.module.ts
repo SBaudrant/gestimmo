@@ -36,7 +36,7 @@ import { LoaderComponent } from '@components/loader/loader.component';
 
 // Our services
 import { environment } from '../../environments/environment';
-import { ParametersService } from '../services/parameters.service';
+import { ParametersService } from '@services/parameters.service';
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { firstValueFrom } from 'rxjs';
 

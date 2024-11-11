@@ -3,11 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { REDIRECT_URL_PARAMETER } from '@models/const/redirect-url-parameter.const';
-import { AuthenticationService } from '../../services/authentication.service';
-import { NotificationService } from '../../services/notification.service';
+import { AuthenticationService } from '@services/authentication.service';
+import { NotificationService } from '@services/notification.service';
 import { finalize } from 'rxjs/operators';
 import { marker as _ } from '@ngneat/transloco-keys-manager/marker';
-import { PagesModule } from '../pages.module';
+import { PagesModule } from '@pages.module';
 import { SharedModule } from '../shared.module';
 
 @Component({

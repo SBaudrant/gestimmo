@@ -2,7 +2,7 @@ import { Component, DestroyRef, OnInit } from '@angular/core';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from '@services/authentication.service';
 import { Role } from '@enum/role.enum';
 import { filter } from 'rxjs';
 import { RoleGuard } from '@guards/role.guard';

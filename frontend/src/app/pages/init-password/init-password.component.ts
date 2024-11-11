@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, finalize, map, switchMap } from 'rxjs/operators';
 import { FormBuilder, Validators } from '@angular/forms';
-import { tooWeakValidator } from '../../validators/too-weak-validator';
-import { AuthenticationService } from '../../services/authentication.service';
-import { NotificationService } from '../../services/notification.service';
+import { tooWeakValidator } from '@validators/too-weak-validator';
+import { AuthenticationService } from '@services/authentication.service';
+import { NotificationService } from '@services/notification.service';
 import { marker as _ } from '@ngneat/transloco-keys-manager/marker';
-import { PagesModule } from '../pages.module';
+import { PagesModule } from '@pages.module';
 
 @Component({
   selector: 'app-reset-password',

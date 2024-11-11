@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../../services/authentication.service';
-import { NotificationService } from '../../services/notification.service';
+import { AuthenticationService } from '@services/authentication.service';
+import { NotificationService } from '@services/notification.service';
 import { finalize } from 'rxjs/operators';
 import { marker as _ } from '@ngneat/transloco-keys-manager/marker';
 

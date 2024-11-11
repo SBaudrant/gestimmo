@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { forkJoin, Observable, of } from 'rxjs';
 import { catchError, finalize, tap } from 'rxjs/operators';
-import { tooWeakValidator } from '../../../validators/too-weak-validator';
+import { tooWeakValidator } from '@validators/too-weak-validator';
 import { User } from '@entity/user.class';
-import { AuthenticationService } from '../../../services/authentication.service';
-import { UserService } from '../../../services/user.service';
-import { NotificationService } from '../../../services/notification.service';
+import { AuthenticationService } from '@services/authentication.service';
+import { UserService } from '@services/user.service';
+import { NotificationService } from '@services/notification.service';
 import { marker as _ } from '@ngneat/transloco-keys-manager/marker';
 
 @Component({
