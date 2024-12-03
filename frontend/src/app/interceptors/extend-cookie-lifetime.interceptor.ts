@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpHandler, HttpEvent, HttpInterceptor, HttpRequest, HttpResponse,
-} from '@angular/common/http';
+import { HttpHandler, HttpEvent, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { CookieService } from '../services/cookie.service';
 import { CookieNameEnum } from '@enum/cookie-name.enum';
 

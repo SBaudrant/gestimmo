@@ -2,7 +2,7 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 // Third party
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -72,48 +72,11 @@ export function getTranslatePaginatorIntl(translate: TranslocoService) {
 }
 
 @NgModule({
-  declarations: [
-  ],
-  imports: [
-    // Angular core
-    CommonModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    // Angular Material
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    MatInputModule,
-    MatTableModule,
-    MatToolbarModule,
-    MatPaginatorModule,
-    MatProgressSpinnerModule,
-    MatSortModule,
-    MatSelectModule,
-    MatAutocompleteModule,
-    MatCheckboxModule,
-    MatTooltipModule,
-    MatSnackBarModule,
-    MatRadioModule,
-    MatListModule,
-    MatDialogModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSidenavModule,
-    MatExpansionModule,
-    // Third party
-    TranslocoModule,
-
-    // Our Global components 
-    ConfirmDialogComponent,
-    LoaderComponent,
-  ],
+  declarations: [],
   exports: [
     // Angular core
     CommonModule,
     FormsModule,
-    HttpClientModule,
     // Angular Material
     MatButtonModule,
     MatCardModule,
@@ -139,6 +102,39 @@ export function getTranslatePaginatorIntl(translate: TranslocoService) {
     MatExpansionModule,
     TranslocoModule,
     // Our components
+    ConfirmDialogComponent,
+    LoaderComponent,
+  ],
+  imports: [
+    // Angular core
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    // Angular Material
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatInputModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatSortModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    MatCheckboxModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatRadioModule,
+    MatListModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSidenavModule,
+    MatExpansionModule,
+    // Third party
+    TranslocoModule,
+    // Our Global components
     ConfirmDialogComponent,
     LoaderComponent,
   ],
@@ -177,6 +173,7 @@ export function getTranslatePaginatorIntl(translate: TranslocoService) {
       useFactory: preloadTranslations,
       deps: [TranslocoService],
     },
+    provideHttpClient(withInterceptorsFromDi()),
   ],
 })
 export class SharedModule {}

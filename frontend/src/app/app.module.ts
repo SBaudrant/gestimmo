@@ -12,32 +12,26 @@ import { PagesModule } from './pages/pages.module';
 
 // Our components
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { SharedModule } from './pages/shared.module';
 import { TranslocoRootModule } from './transloco-root.module';
 
 registerLocaleData(localeFr);
 
-@NgModule({
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    PagesModule,
-    SharedModule,
-    HttpClientModule,
-    TranslocoRootModule,
-  ],
-  declarations: [
-    AppComponent,
-  ],
-  bootstrap: [AppComponent],
-  providers: [
-    {
-      provide: LOCALE_ID,
-      useValue: 'fr-FR',
-    },
-  ],
-})
+@NgModule({ declarations: [
+        AppComponent,
+    ],
+    bootstrap: [AppComponent], imports: [CommonModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        PagesModule,
+        SharedModule,
+        TranslocoRootModule], providers: [
+        {
+            provide: LOCALE_ID,
+            useValue: 'fr-FR',
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule { }
